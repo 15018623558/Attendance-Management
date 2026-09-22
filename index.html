@@ -1000,6 +1000,10 @@
       grid-template-columns: 1.1fr 1.1fr 1fr 1.2fr;
     }
 
+    .query-grid.attendance-project {
+      grid-template-columns: repeat(5, minmax(150px, 1fr));
+    }
+
     .query-grid.accounting-package {
       grid-template-columns: 1.1fr 1.1fr 1fr 1.1fr 1fr 1fr;
     }
@@ -1014,6 +1018,54 @@
 
     .query-grid.clock {
       grid-template-columns: 1.25fr 1fr 1fr 1fr;
+    }
+
+    .query-grid.attendance-record {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .query-grid.attendance-record label {
+      display: block;
+    }
+
+    .query-grid.attendance-record .field-label {
+      margin-bottom: 6px;
+      text-align: left;
+      color: #667487;
+      font-weight: 400;
+    }
+
+    .multi-select-display {
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 32px 0 10px;
+      border: 1px solid var(--line-strong);
+      border-radius: 5px;
+      background: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .multi-select-display::after {
+      content: "⌄";
+      position: absolute;
+      right: 10px;
+      color: #a5adba;
+    }
+
+    .multi-select-tag {
+      height: 22px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 8px;
+      border: 1px solid #e0e4ea;
+      border-radius: 4px;
+      background: #fafafa;
+      color: #4f5b6d;
+      white-space: nowrap;
     }
 
     .query-grid.arrangement-shift {
@@ -1447,6 +1499,102 @@
 
     .my-attendance-table {
       min-width: 2980px;
+    }
+
+    .attendance-record-table {
+      min-width: 4882px;
+    }
+
+    .attendance-record-table th,
+    .attendance-record-table td {
+      text-align: left !important;
+    }
+
+    .attendance-record-table th:last-child,
+    .attendance-record-table td:last-child {
+      overflow: visible;
+    }
+
+    .attendance-record-table .more-actions.open .more-menu {
+      display: grid;
+      gap: 4px;
+    }
+
+    .attendance-record-table .more-menu {
+      right: auto;
+      left: 0;
+    }
+
+    .attendance-record-table th:nth-child(1),
+    .attendance-record-table td:nth-child(1),
+    .attendance-record-table th:nth-child(2),
+    .attendance-record-table td:nth-child(2),
+    .attendance-record-table th:nth-child(3),
+    .attendance-record-table td:nth-child(3),
+    .attendance-record-table th:last-child,
+    .attendance-record-table td:last-child {
+      position: sticky;
+      z-index: 2;
+      background-clip: padding-box;
+    }
+
+    .attendance-record-table th:nth-child(1),
+    .attendance-record-table td:nth-child(1) {
+      left: 0;
+      width: 52px;
+      min-width: 52px;
+      max-width: 52px;
+      text-align: center !important;
+      padding: 0;
+    }
+
+    .attendance-record-table th:nth-child(2),
+    .attendance-record-table td:nth-child(2) {
+      left: 52px;
+      width: 150px;
+      min-width: 150px;
+      max-width: 150px;
+    }
+
+    .attendance-record-table th:nth-child(3),
+    .attendance-record-table td:nth-child(3) {
+      left: 202px;
+      width: 110px;
+      min-width: 110px;
+      max-width: 110px;
+      box-shadow: 8px 0 12px -12px rgba(31, 45, 61, .45);
+    }
+
+    .attendance-record-table th:last-child,
+    .attendance-record-table td:last-child {
+      right: 0;
+      width: 130px;
+      min-width: 130px;
+      max-width: 130px;
+      box-shadow: -8px 0 12px -12px rgba(31, 45, 61, .45);
+    }
+
+    .attendance-record-table tbody td:nth-child(1),
+    .attendance-record-table tbody td:nth-child(2),
+    .attendance-record-table tbody td:nth-child(3),
+    .attendance-record-table tbody td:last-child {
+      background: #fff;
+      z-index: 4;
+    }
+
+    .attendance-record-table tbody tr:nth-child(even) td:nth-child(1),
+    .attendance-record-table tbody tr:nth-child(even) td:nth-child(2),
+    .attendance-record-table tbody tr:nth-child(even) td:nth-child(3),
+    .attendance-record-table tbody tr:nth-child(even) td:last-child {
+      background: #fbfcfe;
+    }
+
+    .attendance-record-table thead th:nth-child(1),
+    .attendance-record-table thead th:nth-child(2),
+    .attendance-record-table thead th:nth-child(3),
+    .attendance-record-table thead th:last-child {
+      z-index: 5;
+      background: #fbfcff;
     }
 
     .holiday-table {
@@ -2965,6 +3113,15 @@
       font-weight: 650;
     }
 
+    .monthly-summary {
+      grid-template-columns: repeat(7, minmax(150px, 1fr));
+      overflow-x: auto;
+    }
+
+    .monthly-summary span {
+      min-width: 150px;
+    }
+
     .pager {
       display: flex;
       justify-content: flex-end;
@@ -3057,6 +3214,13 @@
 
     .modal.accounting-package {
       width: min(940px, calc(100vw - 40px));
+      max-height: calc(100vh - 40px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal.attendance-project {
+      width: min(1120px, calc(100vw - 40px));
       max-height: calc(100vh - 40px);
       display: flex;
       flex-direction: column;
@@ -3327,6 +3491,61 @@
 
     .scheme-section-body {
       padding: 14px;
+    }
+
+    .attendance-project-table {
+      min-width: 2380px;
+    }
+
+    .attendance-formula-table {
+      min-width: 1180px;
+    }
+
+    .formula-platform-table {
+      min-width: 1508px;
+    }
+
+    .attendance-project-modal-body {
+      max-height: 68vh;
+      overflow: auto;
+      padding: 16px 20px 18px;
+    }
+
+    .attendance-project-section {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .attendance-project-section .scheme-section-head {
+      background: #f8fafd;
+    }
+
+    .attendance-project-section .modal-grid {
+      padding: 16px;
+    }
+
+    .radio-line {
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: #536071;
+    }
+
+    .radio-line label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: auto;
+    }
+
+    .radio-line input {
+      width: auto;
+      height: auto;
+      margin: 0;
     }
 
     .scheme-mode-title {
@@ -4535,11 +4754,14 @@
         <div class="menu-item">考勤周期报表</div>
         <div class="menu-group">考勤统计</div>
         <div class="menu-item" data-page-tab="clock">打卡记录</div>
+        <div class="menu-item" data-page-tab="attendanceRecord">考勤记录</div>
         <div class="menu-group">考勤管理</div>
         <div class="menu-item" data-page-tab="whitelist">白名单配置</div>
         <div class="menu-item" data-page-tab="shift">班次配置</div>
         <div class="menu-item" data-page-tab="cycle">考勤周期配置</div>
         <div class="menu-item" data-page-tab="attendanceScheme">考勤方案配置</div>
+        <div class="menu-item" data-page-tab="attendanceProject">考勤项目配置</div>
+        <div class="menu-item" data-page-tab="attendanceFormula">考勤函数配置</div>
         <div class="menu-item" data-page-tab="holiday">节假日配置</div>
         <div class="menu-item" data-page-tab="feishuClockSyncRule">打卡记录同步配置</div>
       </aside>
@@ -4556,12 +4778,15 @@
           <span class="nav-tab" data-page-tab="myMonthlyReport">我的月报</span>
           <span class="nav-tab" data-page-tab="teamMonthlyReport">团队月报</span>
           <span class="nav-tab" data-page-tab="clock">打卡记录</span>
+          <span class="nav-tab" data-page-tab="attendanceRecord">考勤记录</span>
           <span class="nav-tab" data-page-tab="arrangementShift">排班</span>
           <span class="nav-tab" data-page-tab="arrangementShiftLog">排班日志</span>
           <span class="nav-tab" data-page-tab="accountingPackage">考勤核算包</span>
           <span class="nav-tab" data-page-tab="feishuClockUsers">飞书打卡员工名单</span>
           <span class="nav-tab" data-page-tab="cycle">考勤周期配置</span>
           <span class="nav-tab" data-page-tab="attendanceScheme">考勤方案配置</span>
+          <span class="nav-tab" data-page-tab="attendanceProject">考勤项目配置</span>
+          <span class="nav-tab" data-page-tab="attendanceFormula">考勤函数配置</span>
           <span class="nav-tab" data-page-tab="holiday">节假日配置</span>
           <span class="nav-tab" data-page-tab="feishuClockSyncRule">打卡记录同步配置</span>
           <span class="nav-tab" data-page-tab="feishuClockSyncRecords">飞书打卡同步记录</span>
@@ -4594,7 +4819,7 @@
               <span>考勤专员</span><b>4</b>
             </button>
             <button type="button" data-attendance-role-filter="hrbp">
-              <span>HRBP</span><b>4</b>
+              <span>HRBP</span><b>3</b>
             </button>
             <button type="button" data-attendance-role-filter="leader">
               <span>直接上级</span><b>3</b>
@@ -4692,7 +4917,7 @@
                 </div>
                 <div class="role-group" data-panorama-role="leader">
                   <div class="role-label leader"><span></span>直接上级</div>
-                  <div class="scenario-card">
+                  <div class="scenario-card" data-page-tab="teamAttendance">
                     <div class="scenario-title">团队出勤</div>
                     <div class="scenario-desc">查看团队成员出勤状态、异常情况和当日出勤概览。</div>
                     <span class="scenario-arrow">→</span>
@@ -4749,7 +4974,7 @@
                 </div>
                 <div class="role-group" data-panorama-role="hrbp">
                   <div class="role-label hrbp"><span></span>HRBP</div>
-                  <div class="scenario-card">
+                  <div class="scenario-card" data-page-tab="arrangementShift">
                     <div class="scenario-title">排班</div>
                     <div class="scenario-desc">查看管理范围内员工排班安排。</div>
                     <span class="scenario-arrow">→</span>
@@ -4758,35 +4983,22 @@
                 </div>
               </article>
 
-              <article class="panorama-stage">
+              <article class="panorama-stage wide">
                 <div class="stage-head">
                   <span class="stage-no">2</span>
                   <div>
                     <h2>考勤记录</h2>
-                    <p>结果记录 · 员工查询</p>
+                    <p>结果记录 · 原始打卡</p>
                   </div>
                 </div>
                 <div class="role-group" data-panorama-role="hrbp">
                   <div class="role-label hrbp"><span></span>HRBP</div>
-                  <div class="scenario-card">
+                  <div class="scenario-card" data-page-tab="attendanceRecord">
                     <div class="scenario-title">考勤记录</div>
                     <div class="scenario-desc">查询管理范围内员工考勤结果记录。</div>
                     <span class="scenario-arrow">→</span>
                     <div class="terminal-tags"><span class="terminal-tag pc">PC</span></div>
                   </div>
-                </div>
-              </article>
-
-              <article class="panorama-stage">
-                <div class="stage-head">
-                  <span class="stage-no">3</span>
-                  <div>
-                    <h2>打卡记录</h2>
-                    <p>原始打卡 · 明细查询</p>
-                  </div>
-                </div>
-                <div class="role-group" data-panorama-role="hrbp">
-                  <div class="role-label hrbp"><span></span>HRBP</div>
                   <div class="scenario-card" data-page-tab="clock">
                     <div class="scenario-title">打卡记录</div>
                     <div class="scenario-desc">查询管理范围内员工原始打卡明细。</div>
@@ -4868,7 +5080,7 @@
                     <span class="scenario-arrow">→</span>
                     <div class="terminal-tags"><span class="terminal-tag pc">PC</span></div>
                   </div>
-                  <div class="scenario-card">
+                  <div class="scenario-card" data-page-tab="attendanceProject">
                     <div class="scenario-title">考勤项目配置</div>
                     <div class="scenario-desc">配置出勤、迟到、早退、缺勤等考勤项目口径。</div>
                     <span class="scenario-arrow">→</span>
@@ -4906,7 +5118,7 @@
                 </div>
                 <div class="role-group" data-panorama-role="specialist">
                   <div class="role-label specialist"><span></span>考勤专员</div>
-                  <div class="scenario-card">
+                  <div class="scenario-card" data-page-tab="arrangementShift">
                     <div class="scenario-title">排班管理</div>
                     <div class="scenario-desc">维护员工或组织排班安排。</div>
                     <span class="scenario-arrow">→</span>
@@ -4925,7 +5137,7 @@
                 </div>
                 <div class="role-group" data-panorama-role="specialist">
                   <div class="role-label specialist"><span></span>考勤专员</div>
-                  <div class="scenario-card">
+                  <div class="scenario-card" data-page-tab="attendanceRecord">
                     <div class="scenario-title">考勤记录</div>
                     <div class="scenario-desc">查询和核对员工考勤结果记录。</div>
                     <span class="scenario-arrow">→</span>
@@ -5551,11 +5763,7 @@
             <div class="query-grid monthly-single">
               <label>
                 <span class="field-label">月份</span>
-                <span class="month-range">
-                  <input id="myMonthlyStartMonth" type="month" value="2026-09" aria-label="我的月报开始月份">
-                  <span class="month-range-separator">-</span>
-                  <input id="myMonthlyEndMonth" type="month" value="2026-09" aria-label="我的月报截止月份">
-                </span>
+                <input id="myMonthlyRange" class="scheme-log-range-input" type="text" value="2026-09 ~ 2026-09" placeholder="开始月份    ~    结束月份" aria-label="我的月报月份范围">
               </label>
             </div>
             <div class="query-actions">
@@ -5575,6 +5783,7 @@
                 <tbody id="myMonthlyReportRows"></tbody>
               </table>
             </div>
+            <div class="attendance-summary monthly-summary" id="myMonthlyReportSummary" aria-label="我的月报统计条件"></div>
             <div class="pager">
               <span id="myMonthlyReportTotalText">共0条</span>
               <span class="pager-link">&lt;</span>
@@ -5609,11 +5818,7 @@
               </label>
               <label>
                 <span class="field-label">月份</span>
-                <span class="month-range">
-                  <input id="teamMonthlyStartMonth" type="month" value="2026-09" aria-label="团队月报开始月份">
-                  <span class="month-range-separator">-</span>
-                  <input id="teamMonthlyEndMonth" type="month" value="2026-09" aria-label="团队月报截止月份">
-                </span>
+                <input id="teamMonthlyRange" class="scheme-log-range-input" type="text" value="2026-09 ~ 2026-09" placeholder="开始月份    ~    结束月份" aria-label="团队月报月份范围">
               </label>
             </div>
             <div class="query-actions">
@@ -5633,6 +5838,7 @@
                 <tbody id="teamMonthlyReportRows"></tbody>
               </table>
             </div>
+            <div class="attendance-summary monthly-summary" id="teamMonthlyReportSummary" aria-label="团队月报统计条件"></div>
             <div class="pager">
               <span id="teamMonthlyReportTotalText">共0条</span>
               <span class="pager-link">&lt;</span>
@@ -5789,6 +5995,183 @@
               <span class="page-no">1</span>
               <span class="pager-link">2</span>
               <span class="pager-link">3</span>
+              <span class="pager-link">&gt;</span>
+              <select aria-label="每页条数">
+                <option>20 条/页</option>
+                <option>50 条/页</option>
+              </select>
+              <span>跳至</span>
+              <input type="text" aria-label="跳转页码">
+              <span>页</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="page-view" data-page="attendanceRecord">
+          <section class="query-panel" aria-label="考勤记录查询条件">
+            <div class="panel-title">查询条件</div>
+            <div class="query-grid attendance-record">
+              <label>
+                <span class="field-label">考勤状态</span>
+                <select id="attendanceRecordStatus">
+                  <option>全部</option>
+                  <option>正常</option>
+                  <option>异常</option>
+                  <option>缺卡</option>
+                  <option>迟到</option>
+                  <option>早退</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">员工</span>
+                <input id="attendanceRecordEmployee" type="text" placeholder="请通过工号/姓名搜索">
+              </label>
+              <label>
+                <span class="field-label">部门</span>
+                <select id="attendanceRecordDept">
+                  <option>请选择</option>
+                  <option>HRAS人力综合系统 / HRONE产品组</option>
+                  <option>FBU仓储事业部 / 欧洲区 / 德国区</option>
+                  <option>LBU速运事业部 / 中国操作部</option>
+                  <option>DBU落地配事业部 / Gofo Express</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">划分区域</span>
+                <select id="attendanceRecordDivideArea">
+                  <option>请选择</option>
+                  <option>中国区</option>
+                  <option>欧洲区</option>
+                  <option>美洲区</option>
+                  <option>北美区</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">补签状态</span>
+                <select id="attendanceRecordRepairStatus">
+                  <option>请选择</option>
+                  <option>未补签</option>
+                  <option>审批中</option>
+                  <option>已补签</option>
+                  <option>已驳回</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">考勤日期</span>
+                <input id="attendanceRecordDate" type="text" value="2026/09/07   ~   2026/09/22" placeholder="开始日期 ~ 结束日期">
+              </label>
+              <label>
+                <span class="field-label">异常备注</span>
+                <select id="attendanceRecordExceptionRemark">
+                  <option>请选择</option>
+                  <option>上班打卡晚于允许最晚时间</option>
+                  <option>下班打卡早于允许最早时间</option>
+                  <option>缺少下班打卡</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">考勤地点</span>
+                <select id="attendanceRecordLocation">
+                  <option>请选择</option>
+                  <option>德国杜塞尔多夫5号仓</option>
+                  <option>深圳总部</option>
+                  <option>移动打卡</option>
+                  <option>HR手工维护</option>
+                </select>
+              </label>
+              <label>
+                <span class="field-label">人员状态</span>
+                <div class="multi-select-display" id="attendanceRecordPersonnelStatus" aria-label="人员状态">
+                  <span class="multi-select-tag">正式 ×</span>
+                  <span class="multi-select-tag">试用 ×</span>
+                </div>
+              </label>
+              <label>
+                <span class="field-label">计算状态</span>
+                <select id="attendanceRecordCalculateStatus">
+                  <option>请选择</option>
+                  <option>已计算</option>
+                  <option>计算中</option>
+                  <option>计算失败</option>
+                </select>
+              </label>
+            </div>
+            <div class="query-actions">
+              <button type="button" class="ghost" id="resetAttendanceRecord">⟳ 重置</button>
+              <button type="button" class="primary" id="searchAttendanceRecord">⌕ 查询</button>
+            </div>
+          </section>
+
+          <section class="table-panel" aria-label="考勤记录列表">
+            <div class="toolbar">
+              <button type="button" class="primary" id="attendanceRecordRecalculate">重新计算</button>
+              <button type="button" id="attendanceRecordBatchRepair">批量补签</button>
+              <button type="button" id="attendanceRecordExport">导出</button>
+              <button type="button" id="attendanceRecordExportSetting">导出设置</button>
+            </div>
+            <div class="table-wrap">
+              <table class="attendance-record-table">
+                <colgroup>
+                  <col style="width: 52px"><col style="width: 150px"><col style="width: 110px"><col style="width: 150px"><col style="width: 150px"><col style="width: 150px"><col style="width: 150px"><col style="width: 150px"><col style="width: 150px"><col style="width: 150px"><col style="width: 120px"><col style="width: 80px"><col style="width: 150px"><col style="width: 150px"><col style="width: 100px"><col style="width: 130px"><col style="width: 130px"><col style="width: 100px"><col style="width: 100px"><col style="width: 110px"><col style="width: 120px"><col style="width: 110px"><col style="width: 120px"><col style="width: 120px"><col style="width: 120px"><col style="width: 120px"><col style="width: 120px"><col style="width: 100px"><col style="width: 160px"><col style="width: 110px"><col style="width: 110px"><col style="width: 150px"><col style="width: 100px"><col style="width: 100px"><col style="width: 120px"><col style="width: 100px"><col style="width: 110px"><col style="width: 170px"><col style="width: 150px"><col style="width: 130px">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th><input id="attendanceRecordCheckAll" class="table-check" type="checkbox" aria-label="全选考勤记录"></th>
+                    <th>姓名</th>
+                    <th>工号</th>
+                    <th>二级部门</th>
+                    <th>三级部门</th>
+                    <th>四级部门</th>
+                    <th>五级部门</th>
+                    <th>六级部门</th>
+                    <th>七级部门</th>
+                    <th>八级部门</th>
+                    <th>考勤日期</th>
+                    <th>星期</th>
+                    <th>考勤地点</th>
+                    <th>当前班次</th>
+                    <th>班次属性</th>
+                    <th>班次上班时间</th>
+                    <th>班次下班时间</th>
+                    <th>工作时长</th>
+                    <th>出勤时长</th>
+                    <th>首打卡</th>
+                    <th>实际首打卡</th>
+                    <th>末打卡</th>
+                    <th>实际末打卡</th>
+                    <th>原始首打卡</th>
+                    <th>原始末打卡</th>
+                    <th>补签首打卡</th>
+                    <th>补签末打卡</th>
+                    <th>缺勤时长</th>
+                    <th>备注</th>
+                    <th>考勤状态</th>
+                    <th>补签状态</th>
+                    <th>异常备注</th>
+                    <th>迟到分钟</th>
+                    <th>早退分钟</th>
+                    <th>居家办公时长</th>
+                    <th>封存状态</th>
+                    <th>计算状态</th>
+                    <th>计算时间</th>
+                    <th>计算人</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="attendanceRecordRows"></tbody>
+              </table>
+            </div>
+            <div class="attendance-summary" aria-label="考勤记录汇总" hidden>
+              <span>工作时长总计:<b id="attendanceRecordWorkTotal">0</b></span>
+              <span>出勤时长总计:<b id="attendanceRecordActualTotal">0</b></span>
+              <span>居家办公时长总计:<b id="attendanceRecordExpectedTotal">0</b></span>
+              <span>异常记录:<b id="attendanceRecordExceptionTotal">0</b></span>
+            </div>
+            <div class="pager">
+              <span id="attendanceRecordTotalText">共0条</span>
+              <span class="pager-link">&lt;</span>
+              <span class="page-no">1</span>
+              <span class="pager-link">2</span>
               <span class="pager-link">&gt;</span>
               <select aria-label="每页条数">
                 <option>20 条/页</option>
@@ -6445,6 +6828,87 @@
           </section>
         </div>
 
+        <div class="page-view" data-page="attendanceProject">
+          <section class="query-panel" aria-label="考勤项目配置查询条件">
+            <div class="panel-title">查询条件</div>
+            <div class="query-grid attendance-project">
+              <label><span class="field-label">名称</span><input id="attendanceProjectQueryName" type="text" placeholder="请输入"></label>
+              <label><span class="field-label">一级分类</span><select id="attendanceProjectQueryCategory1"><option>请选择</option><option>人事</option><option>考勤</option></select></label>
+              <label><span class="field-label">二级分类</span><select id="attendanceProjectQueryCategory2"><option>请选择</option><option>员工信息</option><option>出勤</option><option>假勤</option></select></label>
+              <label><span class="field-label">数据格式</span><select id="attendanceProjectQueryFormat"><option>请选择</option><option>文本</option><option>数值</option><option>枚举</option><option>日期</option></select></label>
+              <label><span class="field-label">数据类型</span><select id="attendanceProjectQueryType"><option>请选择</option><option>时长</option><option>次数</option><option>金额</option></select></label>
+              <label><span class="field-label">显示位置</span><select id="attendanceProjectQueryPosition"><option>请选择</option><option>日报表</option><option>周期报表</option><option>日报表,周期报表</option></select></label>
+              <label><span class="field-label">周期报与日报关系</span><select id="attendanceProjectQueryRelation"><option>请选择</option><option>最新值</option><option>汇总值</option></select></label>
+              <label><span class="field-label">默认考勤项目</span><select id="attendanceProjectQueryDefault"><option>请选择</option><option>是</option><option>否</option></select></label>
+              <label><span class="field-label">数据来源</span><select id="attendanceProjectQuerySource"><option>请选择</option><option>计算项目</option><option>导入项目</option></select></label>
+              <label><span class="field-label">是否系统预置</span><select id="attendanceProjectQueryPreset"><option>请选择</option><option>是</option><option>否</option></select></label>
+            </div>
+            <div class="query-actions">
+              <button type="button" class="ghost" id="resetAttendanceProject">⟳ 重置</button>
+              <button type="button" class="primary" id="searchAttendanceProject">⌕ 查询</button>
+            </div>
+          </section>
+
+          <section class="table-panel" aria-label="考勤项目配置列表">
+            <div class="toolbar">
+              <button type="button" class="primary" id="openAttendanceProjectAdd">+ 新增</button>
+              <button type="button" id="attendanceProjectImport">⇧ 导入</button>
+              <button type="button" id="attendanceProjectExport">⇩ 导出</button>
+              <button type="button" id="attendanceProjectExportSetting">导出设置</button>
+            </div>
+            <div class="table-wrap">
+              <table class="attendance-project-table">
+                <colgroup>
+                  <col style="width: 58px"><col style="width: 160px"><col style="width: 110px"><col style="width: 110px"><col style="width: 100px"><col style="width: 90px"><col style="width: 90px"><col style="width: 110px"><col style="width: 110px"><col style="width: 110px"><col style="width: 90px"><col style="width: 160px"><col style="width: 150px"><col style="width: 120px"><col style="width: 90px"><col style="width: 110px"><col style="width: 110px"><col style="width: 190px"><col style="width: 90px"><col style="width: 180px"><col style="width: 150px"><col style="width: 170px"><col style="width: 130px">
+                </colgroup>
+                <thead>
+                  <tr>
+                    <th class="center">序号</th><th>名称</th><th>编码</th><th>数据格式</th><th>数据类型</th><th>单位</th><th>小数位数</th><th>进位方式</th><th>一级分类</th><th>二级分类</th><th>是否显示</th><th>显示位置</th><th>周期报与日报关系</th><th>是否允许修改</th><th>是否存储</th><th>默认考勤项目</th><th>数据来源</th><th>默认规则</th><th>是否系统预置</th><th>描述</th><th>最近修改人</th><th>最近修改时间</th><th>操作</th>
+                  </tr>
+                </thead>
+                <tbody id="attendanceProjectRows"></tbody>
+              </table>
+            </div>
+            <div class="pager">
+              <span id="attendanceProjectTotalText">共155条</span>
+              <span class="pager-link">&lt;</span><span class="page-no">1</span><span class="pager-link">2</span><span class="pager-link">3</span><span class="pager-link">4</span><span class="pager-link">5</span><span class="pager-more">...</span><span class="pager-link">8</span><span class="pager-link">&gt;</span>
+              <select aria-label="每页条数"><option>20 条/页</option><option>50 条/页</option></select>
+              <span>跳至</span><input type="text" aria-label="跳转页码"><span>页</span>
+            </div>
+          </section>
+        </div>
+
+        <div class="page-view" data-page="attendanceFormula">
+          <section class="query-panel" aria-label="考勤函数配置查询条件">
+            <div class="panel-title">查询条件</div>
+            <div class="query-grid scheme">
+              <label><span class="field-label">函数名称</span><input id="attendanceFormulaQueryName" type="text" placeholder="请输入"></label>
+              <label><span class="field-label">适用场景</span><select id="attendanceFormulaQueryScene"><option>请选择</option><option>考勤项目</option><option>日报汇总</option><option>周期报汇总</option></select></label>
+              <label><span class="field-label">状态</span><select id="attendanceFormulaQueryStatus"><option>全部</option><option>启用</option><option>停用</option></select></label>
+              <label><span class="field-label">最近修改人</span><input id="attendanceFormulaQueryUpdater" type="text" placeholder="请通过工号/姓名搜索"></label>
+            </div>
+            <div class="query-actions">
+              <button type="button" class="ghost" id="resetAttendanceFormula">⟳ 重置</button>
+              <button type="button" class="primary" id="searchAttendanceFormula">⌕ 查询</button>
+            </div>
+          </section>
+
+          <section class="table-panel" aria-label="考勤函数配置列表">
+            <div class="toolbar">
+              <button type="button" class="primary" id="openAttendanceFormulaAdd">+ 新增函数</button>
+              <button type="button" id="attendanceFormulaExport">⇩ 导出</button>
+            </div>
+            <div class="table-wrap">
+              <table class="attendance-formula-table">
+                <colgroup><col style="width: 58px"><col style="width: 220px"><col style="width: 160px"><col style="width: 360px"><col style="width: 100px"><col style="width: 160px"><col style="width: 170px"><col style="width: 130px"></colgroup>
+                <thead><tr><th class="center">序号</th><th>函数名称</th><th>适用场景</th><th>函数说明</th><th>状态</th><th>最近修改人</th><th>最近修改时间</th><th>操作</th></tr></thead>
+                <tbody id="attendanceFormulaRows"></tbody>
+              </table>
+            </div>
+            <div class="pager"><span id="attendanceFormulaTotalText">共4条</span><span class="pager-link">&lt;</span><span class="page-no">1</span><span class="pager-link">&gt;</span><select aria-label="每页条数"><option>20 条/页</option><option>50 条/页</option></select></div>
+          </section>
+        </div>
+
         <div class="page-view" data-page="holiday">
           <section class="query-panel" aria-label="节假日配置查询条件">
             <div class="panel-title">查询条件</div>
@@ -6945,7 +7409,8 @@
                   <col style="width: 150px">
                   <col style="width: 120px">
                   <col style="width: 120px">
-                  <col style="width: 300px">
+                  <col style="width: 220px">
+                  <col style="width: 260px">
                   <col style="width: 180px">
                   <col style="width: 100px">
                   <col style="width: 180px">
@@ -6994,7 +7459,8 @@
                     <th>上班豁免时长(分钟)</th>
                     <th>上班向下取整</th>
                     <th>下班向上取整</th>
-                    <th>适用范围</th>
+                    <th>适用组织</th>
+                    <th>适用区域</th>
                     <th>上班多久(分钟)记为迟到</th>
                     <th>豁免次数</th>
                     <th>迟到多久(分钟)记为旷工</th>
@@ -7194,7 +7660,7 @@
                 <div class="rest-pane" data-rest-pane="duration">
                   <div class="mini-table">
                     <table>
-                      <thead>
+                      <thead hidden>
                         <tr>
                           <th>休息计算字段</th>
                           <th>条件一运算符</th>
@@ -7221,7 +7687,7 @@
                 </div>
               </section>
 
-              <section class="form-panel" aria-label="新增班次设置取整设置">
+              <section class="form-panel" aria-label="新增班次设置取整设置" id="roundingPanel">
                 <div class="form-panel-head">取整设置</div>
                 <div class="form-grid shift-form">
                   <label class="oehr-field">
@@ -8028,6 +8494,57 @@
           </div>
         </div>
       </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="attendanceProjectModal" role="dialog" aria-modal="true" aria-labelledby="attendanceProjectModalTitle">
+    <div class="modal attendance-project">
+      <div class="modal-head">
+        <span id="attendanceProjectModalTitle">新增考勤项目</span>
+        <button type="button" class="modal-close" data-close="attendanceProjectModal">×</button>
+      </div>
+      <div class="attendance-project-modal-body">
+        <div class="attendance-project-section">
+          <div class="scheme-section-head">基本设置</div>
+          <div class="modal-grid">
+            <label><span class="field-label required">考勤项目名称</span><input id="attendanceProjectName" type="text" placeholder="请输入"></label>
+            <label><span class="field-label required">数据格式</span><select id="attendanceProjectFormat"><option>数值</option><option>文本</option><option>枚举</option><option>日期</option></select></label>
+            <label><span class="field-label required">数据类型</span><select><option>时长</option><option>次数</option><option>金额</option></select></label>
+            <label><span class="field-label required">单位</span><select><option>小时</option><option>天</option><option>次</option></select></label>
+            <label><span class="field-label required">小数位数</span><input type="number" min="0" max="6" value="2" placeholder="可输入0~6"></label>
+            <label><span class="field-label required">进位方式</span><select><option>四舍五入</option><option>向下取整</option><option>向上取整</option></select></label>
+            <label class="full"><span class="field-label">描述</span><textarea id="attendanceProjectDesc" placeholder="请描述项目的业务含义或用途"></textarea></label>
+          </div>
+        </div>
+        <div class="attendance-project-section">
+          <div class="scheme-section-head">更多设置</div>
+          <div class="modal-grid">
+            <label><span class="field-label required">一级分类</span><select><option>考勤</option><option>人事</option></select></label>
+            <label><span class="field-label required">二级分类</span><select><option>出勤</option><option>员工信息</option><option>假勤</option></select></label>
+            <label><span class="field-label required">是否显示</span><span class="radio-line"><label><input type="radio" name="projectVisible" checked>是</label><label><input type="radio" name="projectVisible">否</label></span></label>
+            <label><span class="field-label required">显示位置</span><select><option>日报表,周期报表</option><option>日报表</option><option>周期报表</option></select></label>
+            <label><span class="field-label required">周期报与日报关系</span><select><option>汇总值</option><option>最新值</option></select></label>
+            <label><span class="field-label required">是否允许修改</span><span class="radio-line"><label><input type="radio" name="projectEditable">是</label><label><input type="radio" name="projectEditable" checked>否</label></span></label>
+            <label><span class="field-label required">是否存储</span><span class="radio-line"><label><input type="radio" name="projectStore" checked disabled>是</label><label><input type="radio" name="projectStore" disabled>否</label></span></label>
+            <label><span class="field-label required">默认考勤项目</span><span class="radio-line"><label><input type="radio" name="projectDefault" checked>是</label><label><input type="radio" name="projectDefault">否</label></span></label>
+            <label><span class="field-label required">是否系统预置</span><span class="radio-line"><label><input type="radio" name="projectPreset" disabled>是</label><label><input type="radio" name="projectPreset" checked disabled>否</label></span></label>
+          </div>
+        </div>
+        <div class="attendance-project-section">
+          <div class="scheme-section-head">计算规则</div>
+          <div class="modal-grid">
+            <label><span class="field-label">项目顺序</span><input type="number" placeholder="请输入"></label>
+            <label><span class="field-label required">数据来源</span><select><option>计算项目</option><option>导入项目</option></select></label>
+            <label><span class="field-label">从排班读取</span><select><option>请选择</option><option>班次名称</option><option>应出勤时长</option></select></label>
+            <label><span class="field-label">从考勤记录读取</span><select><option>请选择</option><option>星期</option><option>工作时长</option><option>首打卡</option></select></label>
+            <label class="full"><span class="field-label">自定义函数</span><select><option>支持模糊搜索</option><option>工作时长计算函数</option><option>日报总工时函数</option><option>周期汇总函数</option></select></label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button type="button" data-close="attendanceProjectModal">取消</button>
+        <button type="button" class="primary" id="confirmAttendanceProject">确定</button>
+      </div>
     </div>
   </div>
 
@@ -9134,7 +9651,27 @@
       { id: 1032, packageName: "LBU-爱尔兰-2026-09-01-2026-09-30", divideAreaName: "LBU-爱尔兰", cycleYearMonth: "2026-09", cycleTimePeriod: "2026-09-01 ~ 2026-09-30", numberOfPeople: 42, programCode: "AP00135", programName: "LBU爱尔兰", cycleId: "1", cycleName: "标准月度周期", packageStatusName: "进行中", createdBy: "陈南（zt06293）", createdOn: "2026/09/10 15:30:00", lastUpdatedBy: "陈南（zt06293）", lastUpdatedOn: "2026/09/10 15:30:00", description: "爱尔兰区 9 月考勤核算包。", conditions: [{ type: "划分区域", name: "LBU-爱尔兰", exclude: "" }], people: "" },
       { id: 1031, packageName: "LBU-香港-2026-09-01-2026-09-30", divideAreaName: "LBU-香港", cycleYearMonth: "2026-09", cycleTimePeriod: "2026-09-01 ~ 2026-09-30", numberOfPeople: 36, programCode: "AP00134", programName: "v的3", cycleId: "1", cycleName: "标准月度周期", packageStatusName: "部分完成", createdBy: "雷佳俊（zt20292）", createdOn: "2026/09/09 10:12:18", lastUpdatedBy: "雷佳俊（zt20292）", lastUpdatedOn: "2026/09/09 18:06:25", description: "香港区核算包，含人工补充人员。", conditions: [{ type: "划分区域", name: "LBU-香港", exclude: "" }, { type: "部门", name: "LBU速运事业部", exclude: "陈南（zt06293）" }], people: "黄丽彤（zt20525）" },
       { id: 1028, packageName: "FBU-美东区-2026-08-01-2026-08-31", divideAreaName: "FBU-美东区", cycleYearMonth: "2026-08", cycleTimePeriod: "2026-08-01 ~ 2026-08-31", numberOfPeople: 128, programCode: "AP00120", programName: "美东测试", cycleId: "1", cycleName: "标准月度周期", packageStatusName: "已完成", createdBy: "黄东升（zt21197）", createdOn: "2026/09/01 09:20:13", lastUpdatedBy: "黄东升（zt21197）", lastUpdatedOn: "2026/09/05 17:42:31", description: "美东区 8 月已封存核算包。", conditions: [{ type: "划分区域", name: "FBU-美东区", exclude: "" }], people: "" },
-      { id: 1026, packageName: "FBU-德国区-2026-08-01-2026-08-31", divideAreaName: "FBU-德国区", cycleYearMonth: "2026-08", cycleTimePeriod: "2026-08-01 ~ 2026-08-31", numberOfPeople: 86, programCode: "AP00125", programName: "大批量德国区", cycleId: "3", cycleName: "德国仓月度周期", packageStatusName: "非已完成", createdBy: "雷佳俊（zt20292）", createdOn: "2026/08/31 16:48:09", lastUpdatedBy: "陈南（zt06293）", lastUpdatedOn: "2026/09/03 11:19:52", description: "", conditions: [{ type: "划分区域", name: "FBU-德国区", exclude: "" }, { type: "办公地点", name: "杜塞尔多夫5号仓", exclude: "" }], people: "" }
+      { id: 1026, packageName: "FBU-德国区-2026-08-01-2026-08-31", divideAreaName: "FBU-德国区", cycleYearMonth: "2026-08", cycleTimePeriod: "2026-08-01 ~ 2026-08-31", numberOfPeople: 86, programCode: "AP00125", programName: "大批量德国区", cycleId: "3", cycleName: "德国仓月度周期", packageStatusName: "非已完成", createdBy: "雷佳俊（zt20292）", createdOn: "2026/08/31 16:48:09", lastUpdatedBy: "陈南（zt06293）", lastUpdatedOn: "2026/09/03 11:19:52", description: "", conditions: [{ type: "划分区域", name: "FBU-德国区", exclude: "" }, { type: "用工形式", name: "全职", exclude: "" }], people: "" }
+    ];
+
+    const attendanceProjectRowsData = [
+      { name: "姓名", code: "AT00001", format: "文本", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从花名册读取--姓名", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "工号", code: "AT00002", format: "文本", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从花名册读取--工号", preset: "是", desc: "测试1213", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "公司邮箱", code: "AT00237", format: "文本", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从花名册读取--公司邮箱", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "划分区域", code: "AT00004", format: "枚举", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从任职记录读取--划分区域", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "星期", code: "AT00166", format: "文本", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "考勤", category2: "出勤", visible: "是", position: "日报表,周期报表", relation: "汇总值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从考勤记录读取--星期", preset: "否", desc: "测试考勤项目执行", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "测试210", code: "AT00003", format: "数值", type: "时长", unit: "小时", decimals: "2", rounding: "向下取整", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "是", store: "是", defaultItem: "否", source: "计算项目", rule: "自定义函数 查看", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "工作时长", code: "AT00146", format: "数值", type: "时长", unit: "小时", decimals: "2", rounding: "四舍五入", category1: "考勤", category2: "出勤", visible: "是", position: "日报表", relation: "--", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "自定义函数 查看", preset: "否", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "二级部门", code: "AT00005", format: "枚举", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从任职记录读取--二级部门", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "三级部门", code: "AT00006", format: "枚举", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从任职记录读取--三级部门", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "四级部门", code: "AT00007", format: "枚举", type: "--", unit: "--", decimals: "--", rounding: "--", category1: "人事", category2: "员工信息", visible: "是", position: "日报表,周期报表", relation: "最新值", editable: "否", store: "是", defaultItem: "是", source: "计算项目", rule: "从任职记录读取--四级部门", preset: "是", desc: "--", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" }
+    ];
+
+    const attendanceFormulaRowsData = [
+      { name: "工作时长计算函数", scene: "考勤项目", desc: "按班次、打卡记录和请假数据计算每日工作时长。", status: "启用", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
+      { name: "日报总工时函数", scene: "日报汇总", desc: "汇总工作时长、休假时长和加班时长，生成日报展示值。", status: "启用", updatedBy: "陈南(zt06293)", updatedAt: "2026/08/20 11:12:05" },
+      { name: "周期汇总函数", scene: "周期报汇总", desc: "按考勤周期汇总迟到、早退、缺勤和出勤相关指标。", status: "启用", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/18 15:26:31" },
+      { name: "异常天数函数", scene: "周期报汇总", desc: "统计周期内存在迟到、早退、缺卡或缺勤的异常天数。", status: "停用", updatedBy: "黄东升(zt21197)", updatedAt: "2026/07/30 09:51:09" }
     ];
 
     const schemeAttendanceListDefaults = [
@@ -9194,6 +9731,16 @@
       { key: "holidayOt", label: "节假日加班" },
       { key: "businessTripDays", label: "出差天数" },
       { key: "officialOutDays", label: "公出天数" }
+    ];
+
+    const monthlyReportSummaryFields = [
+      { key: "normalOtRest", label: "日常加班调休" },
+      { key: "normalOtPay", label: "日常加班计薪" },
+      { key: "workdayOt", label: "工作日加班" },
+      { key: "restOtRest", label: "公休加班调休" },
+      { key: "restOtPay", label: "公休加班计薪" },
+      { key: "restdayOt", label: "公休日加班" },
+      { key: "holidayOt", label: "节假日加班" }
     ];
 
     const monthlyReportRows = people.slice(0, 8).map((person, index) => ({
@@ -9665,6 +10212,153 @@
       }
     ];
 
+    const attendanceRecordRowsData = [
+      {
+        empName: "David Akwasi Agyeman",
+        empNo: "zt18437",
+        dept: "FBU仓储事业部 / 欧洲区 / 德国区 / 杜塞尔多夫5号仓 / QA Team 质检组",
+        date: "2026/09/01",
+        week: "二",
+        shift: "德国固定班09:00",
+        attr: "工作日",
+        expectedHours: "8",
+        actualHours: "8",
+        workHours: "8.12",
+        firstClock: "08:58",
+        lastClock: "18:06",
+        absentHours: "0",
+        status: "正常",
+        exceptionRemark: "--",
+        lateMinutes: "0",
+        earlyMinutes: "0",
+        repairStatus: "--",
+        source: "中控",
+        remark: "--",
+        updatedBy: "雷佳俊(zt20292)",
+        updatedAt: "2026/09/01 18:20:11"
+      },
+      {
+        empName: "Elizabeth Sumah",
+        empNo: "zt18137",
+        dept: "FBU仓储事业部 / 欧洲区 / 德国区 / 杜塞尔多夫5号仓 / Packing Team 打包组",
+        date: "2026/09/01",
+        week: "二",
+        shift: "德国固定班09:00",
+        attr: "工作日",
+        expectedHours: "8",
+        actualHours: "7.5",
+        workHours: "7.5",
+        firstClock: "09:16",
+        lastClock: "18:02",
+        absentHours: "0",
+        status: "迟到",
+        exceptionRemark: "上班打卡晚于允许最晚时间",
+        lateMinutes: "16",
+        earlyMinutes: "0",
+        repairStatus: "未补签",
+        source: "中控",
+        remark: "--",
+        updatedBy: "雷佳俊(zt20292)",
+        updatedAt: "2026/09/01 18:18:25"
+      },
+      {
+        empName: "黄丽彤",
+        empNo: "zt20525",
+        dept: "LBU速运事业部 / 中国操作部 / 亚太枢纽",
+        date: "2026/09/02",
+        week: "三",
+        shift: "深圳总部标准班",
+        attr: "工作日",
+        expectedHours: "8",
+        actualHours: "8",
+        workHours: "8.07",
+        firstClock: "09:03",
+        lastClock: "18:11",
+        absentHours: "0",
+        status: "正常",
+        exceptionRemark: "--",
+        lateMinutes: "0",
+        earlyMinutes: "0",
+        repairStatus: "--",
+        source: "飞书",
+        remark: "--",
+        updatedBy: "雷佳俊(zt20292)",
+        updatedAt: "2026/09/02 18:16:40"
+      },
+      {
+        empName: "王荣鹏",
+        empNo: "zt15299",
+        dept: "DBU落地配事业部 / Gofo Express / US技术部 / 交付组",
+        date: "2026/09/02",
+        week: "三",
+        shift: "美国远程弹性班",
+        attr: "工作日",
+        expectedHours: "8",
+        actualHours: "4",
+        workHours: "4",
+        firstClock: "09:28",
+        lastClock: "--",
+        absentHours: "4",
+        status: "缺卡",
+        exceptionRemark: "缺少下班打卡",
+        lateMinutes: "0",
+        earlyMinutes: "0",
+        repairStatus: "审批中",
+        source: "飞书",
+        remark: "员工已发起补签",
+        updatedBy: "陈斯毅(zt17270)",
+        updatedAt: "2026/09/02 19:02:17"
+      },
+      {
+        empName: "陈斯毅",
+        empNo: "zt17270",
+        dept: "HRAS人力综合系统 / LBU HRBP Dept. / HRBP1组",
+        date: "2026/09/03",
+        week: "四",
+        shift: "深圳总部标准班",
+        attr: "工作日",
+        expectedHours: "8",
+        actualHours: "8",
+        workHours: "8",
+        firstClock: "09:00",
+        lastClock: "18:08",
+        absentHours: "0",
+        status: "正常",
+        exceptionRemark: "--",
+        lateMinutes: "0",
+        earlyMinutes: "0",
+        repairStatus: "已补签",
+        source: "人工导入",
+        remark: "HR手工补录",
+        updatedBy: "陈斯毅(zt17270)",
+        updatedAt: "2026/09/03 18:20:11"
+      },
+      {
+        empName: "Yasin Aldeb",
+        empNo: "zt18369",
+        dept: "FBU仓储事业部 / 欧洲区 / 德国区 / 杜塞尔多夫1号仓 / 出库组",
+        date: "2026/09/03",
+        week: "四",
+        shift: "德国固定班09:00",
+        attr: "工作日",
+        expectedHours: "8",
+        actualHours: "7",
+        workHours: "7",
+        firstClock: "08:47",
+        lastClock: "17:14",
+        absentHours: "0",
+        status: "早退",
+        exceptionRemark: "下班打卡早于允许最早时间",
+        lateMinutes: "0",
+        earlyMinutes: "46",
+        repairStatus: "未补签",
+        source: "中控",
+        remark: "--",
+        updatedBy: "雷佳俊(zt20292)",
+        updatedAt: "2026/09/03 17:18:05"
+      }
+    ];
+
     const feishuClockUserRowsData = [
       {
         empNo: "zt0000054",
@@ -10131,6 +10825,7 @@
     const tbody = document.getElementById("whitelistRows");
     const shiftTbody = document.getElementById("shiftRows");
     const clockTbody = document.getElementById("clockRows");
+    const attendanceRecordTbody = document.getElementById("attendanceRecordRows");
     const feishuClockUserTbody = document.getElementById("feishuClockUserRows");
     const attendanceSchemeTbody = document.getElementById("attendanceSchemeRows");
     const myScheduleTbody = document.getElementById("myScheduleRows");
@@ -10138,11 +10833,14 @@
     const teamAttendanceTbody = document.getElementById("teamAttendanceRows");
     const myMonthlyReportTbody = document.getElementById("myMonthlyReportRows");
     const teamMonthlyReportTbody = document.getElementById("teamMonthlyReportRows");
+    const attendanceProjectTbody = document.getElementById("attendanceProjectRows");
+    const attendanceFormulaTbody = document.getElementById("attendanceFormulaRows");
     const holidayTbody = document.getElementById("holidayRows");
     const holidayDetailTbody = document.getElementById("holidayDetailRows");
     const totalText = document.getElementById("totalText");
     const shiftTotalText = document.getElementById("shiftTotalText");
     const clockTotalText = document.getElementById("clockTotalText");
+    const attendanceRecordTotalText = document.getElementById("attendanceRecordTotalText");
     const feishuClockUserTotalText = document.getElementById("feishuClockUserTotalText");
     const schemeTotalText = document.getElementById("schemeTotalText");
     const myScheduleTotalText = document.getElementById("myScheduleTotalText");
@@ -10150,6 +10848,8 @@
     const teamAttendanceTotalText = document.getElementById("teamAttendanceTotalText");
     const myMonthlyReportTotalText = document.getElementById("myMonthlyReportTotalText");
     const teamMonthlyReportTotalText = document.getElementById("teamMonthlyReportTotalText");
+    const attendanceProjectTotalText = document.getElementById("attendanceProjectTotalText");
+    const attendanceFormulaTotalText = document.getElementById("attendanceFormulaTotalText");
     const holidayTotalText = document.getElementById("holidayTotalText");
     const toast = document.getElementById("toast");
     const selectedPeople = new Set(people.map((person) => person.empNo));
@@ -10182,7 +10882,7 @@
     let scopeTooltip = null;
     let pendingWhitelistDeleteIndex = -1;
 
-    const scopeConditionOptions = ["划分区域", "部门", "办公地点", "用工形式"];
+    const scopeConditionOptions = ["划分区域", "部门"];
     const scopeRangeDefaults = {
       "划分区域": ["英国区", "北美区", "德国区", "中国区", "法国区", "荷兰区", "日本区", "澳洲区", "西班牙区", "爱尔兰区", "丹麦区", "比利时区", "意大利区"],
       "用工形式": ["全职", "兼职", "外包", "实习"]
@@ -10210,6 +10910,67 @@
         td.title = title || td.textContent;
       }
       return td;
+    }
+
+    function renderAttendanceProjectRows(displayRows = attendanceProjectRowsData) {
+      attendanceProjectTbody.innerHTML = "";
+      displayRows.slice(0, 10).forEach((row, index) => {
+        const tr = document.createElement("tr");
+        [
+          String(index + 1),
+          row.name,
+          row.code,
+          row.format,
+          row.type,
+          row.unit,
+          row.decimals,
+          row.rounding,
+          row.category1,
+          row.category2,
+          row.visible,
+          row.position,
+          row.relation,
+          row.editable,
+          row.store,
+          row.defaultItem,
+          row.source,
+          row.rule,
+          row.preset,
+          row.desc,
+          row.updatedBy,
+          row.updatedAt
+        ].forEach((value, cellIndex) => {
+          tr.appendChild(cell(value, cellIndex === 0 ? "center" : "", value));
+        });
+        const actionTd = document.createElement("td");
+        const actions = document.createElement("span");
+        actions.className = "row-actions";
+        actions.appendChild(holidayIconButton("编辑", "edit", () => openModal("attendanceProjectModal")));
+        actions.appendChild(holidayIconButton("复制", "copy", () => openModal("attendanceProjectModal")));
+        actionTd.appendChild(actions);
+        tr.appendChild(actionTd);
+        attendanceProjectTbody.appendChild(tr);
+      });
+      attendanceProjectTotalText.textContent = "共155条";
+    }
+
+    function renderAttendanceFormulaRows(displayRows = attendanceFormulaRowsData) {
+      attendanceFormulaTbody.innerHTML = "";
+      displayRows.forEach((row, index) => {
+        const tr = document.createElement("tr");
+        [String(index + 1), row.name, row.scene, row.desc, row.status, row.updatedBy, row.updatedAt].forEach((value, cellIndex) => {
+          tr.appendChild(cell(value, cellIndex === 0 ? "center" : "", value));
+        });
+        const actionTd = document.createElement("td");
+        const actions = document.createElement("span");
+        actions.className = "row-actions";
+        actions.appendChild(holidayIconButton("编辑", "edit", () => showToast("函数编辑为静态原型展示")));
+        actions.appendChild(holidayIconButton("复制", "copy", () => showToast("函数复制为静态原型展示")));
+        actionTd.appendChild(actions);
+        tr.appendChild(actionTd);
+        attendanceFormulaTbody.appendChild(tr);
+      });
+      attendanceFormulaTotalText.textContent = `共${displayRows.length}条`;
     }
 
     const holidayActionIcons = {
@@ -10484,6 +11245,10 @@
       return Number.isFinite(number) ? number : 0;
     }
 
+    function formatAttendanceTotal(value) {
+      return Number.isInteger(value) ? String(value) : value.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
+    }
+
     function updateMyAttendanceSummary(displayRows) {
       const totals = displayRows.reduce((sum, row) => {
         sum.expected += attendanceNumber(row.expectedHours);
@@ -10735,6 +11500,17 @@
       totalEl.textContent = `共${rowsData.length}条`;
     }
 
+    function updateMonthlyReportSummary(summaryId, rowsData) {
+      const summary = document.getElementById(summaryId);
+      summary.innerHTML = "";
+      monthlyReportSummaryFields.forEach((field) => {
+        const total = rowsData.reduce((sum, row) => sum + attendanceNumber(row[field.key]), 0);
+        const item = document.createElement("span");
+        item.innerHTML = `${field.label}总计:<b>${total}</b>`;
+        summary.appendChild(item);
+      });
+    }
+
     function monthlyReportMonthValue(monthLabel) {
       const match = /^(\d{4})年(\d{2})月$/.exec(monthLabel);
       return match ? `${match[1]}-${match[2]}` : monthLabel;
@@ -10751,22 +11527,25 @@
       return startMonth ? month >= startMonth : month <= endMonth;
     }
 
-    function resetMonthlyReportRange(startId, endId) {
-      document.getElementById(startId).value = "2026-09";
-      document.getElementById(endId).value = "2026-09";
+    function monthlyReportRangeValue(rangeId) {
+      const value = document.getElementById(rangeId).value.trim();
+      const [startMonth, endMonth] = value.split("~").map((item) => item.trim());
+      return { startMonth, endMonth };
+    }
+
+    function resetMonthlyReportRange(rangeId) {
+      document.getElementById(rangeId).value = "2026-09 ~ 2026-09";
     }
 
     function filteredMyMonthlyReports() {
-      const startMonth = document.getElementById("myMonthlyStartMonth").value;
-      const endMonth = document.getElementById("myMonthlyEndMonth").value;
+      const { startMonth, endMonth } = monthlyReportRangeValue("myMonthlyRange");
       return monthlyReportRows.filter((row) => monthlyReportInRange(row.month, startMonth, endMonth));
     }
 
     function filteredTeamMonthlyReports() {
       const name = document.getElementById("teamMonthlyName").value;
       const dept = document.getElementById("teamMonthlyDept").value;
-      const startMonth = document.getElementById("teamMonthlyStartMonth").value;
-      const endMonth = document.getElementById("teamMonthlyEndMonth").value;
+      const { startMonth, endMonth } = monthlyReportRangeValue("teamMonthlyRange");
       return monthlyReportRows.filter((row) => {
         const nameMatched = name === "全部" || row.name === name;
         const deptMatched = dept === "全部" || row.dept === dept;
@@ -10789,11 +11568,15 @@
     }
 
     function renderMyMonthlyReportRows() {
-      renderMonthlyReportRows(myMonthlyReportTbody, filteredMyMonthlyReports(), myMonthlyReportTotalText);
+      const rows = filteredMyMonthlyReports();
+      renderMonthlyReportRows(myMonthlyReportTbody, rows, myMonthlyReportTotalText);
+      updateMonthlyReportSummary("myMonthlyReportSummary", rows);
     }
 
     function renderTeamMonthlyReportRows() {
-      renderMonthlyReportRows(teamMonthlyReportTbody, filteredTeamMonthlyReports(), teamMonthlyReportTotalText);
+      const rows = filteredTeamMonthlyReports();
+      renderMonthlyReportRows(teamMonthlyReportTbody, rows, teamMonthlyReportTotalText);
+      updateMonthlyReportSummary("teamMonthlyReportSummary", rows);
     }
 
     function schemeStatusClass(status) {
@@ -11426,20 +12209,14 @@
       updateAccountingPackageTotalText(displayRows);
     }
 
-    const schemeConditionTypes = ["划分区域", "部门", "办公地点", "用工形式", "职级"];
+    const schemeConditionTypes = ["划分区域", "部门", "用工形式"];
 
     function schemeConditionOptions(type) {
       if (type === "部门") {
         return uniqueFilled(people.flatMap((person) => [person.d2, person.d3, person.d4, person.d6]));
       }
-      if (type === "办公地点") {
-        return uniqueFilled(people.map((person) => person.d5));
-      }
       if (type === "用工形式") {
         return ["全职", "兼职", "外包", "实习"];
-      }
-      if (type === "职级") {
-        return ["P1", "P2", "P3", "P4", "M1", "M2"];
       }
       return [
         "LBU-爱尔兰",
@@ -12074,9 +12851,14 @@
       showToast(`考勤方案已${row.status === "禁用" ? "停用" : "启用"}`);
     }
 
-    function scopeCell(row) {
+    function scopeColumnRules(row, conditionNames) {
+      const allowed = new Set(conditionNames);
+      return normalizedScopeRules(row).filter((rule) => allowed.has(rule.condition));
+    }
+
+    function scopeColumnCell(row, conditionNames) {
       const td = document.createElement("td");
-      const rules = normalizedScopeRules(row);
+      const rules = scopeColumnRules(row, conditionNames);
       if (!rules.length) {
         td.textContent = "--";
         return td;
@@ -12087,7 +12869,7 @@
       rules.forEach((rule) => {
         const tag = document.createElement("span");
         tag.className = "scope-summary-tag";
-        tag.textContent = `${rule.condition} ${rule.ranges.length}`;
+        tag.textContent = rule.ranges.length > 1 ? `${rule.ranges[0]}等${rule.ranges.length}项` : rule.ranges[0];
         summary.appendChild(tag);
       });
 
@@ -12194,6 +12976,130 @@
       clockTotalText.textContent = `共${clockRowsData.length}条`;
     }
 
+    function attendanceRecordDeptPart(row, index) {
+      return (row.dept || "").split(" / ")[index] || "--";
+    }
+
+    function attendanceRecordShiftTime(row, type) {
+      if (row.shift.includes("美国")) return type === "start" ? "09:30" : "18:30";
+      return type === "start" ? "09:00" : "18:00";
+    }
+
+    function attendanceRecordLocation(row) {
+      const deptLocation = (row.dept || "").split(" / ")[3];
+      if (row.attendanceLocation) return row.attendanceLocation;
+      if (deptLocation) return deptLocation;
+      if (row.source === "飞书") return "移动打卡";
+      if (row.source === "人工导入") return "HR手工维护";
+      return "--";
+    }
+
+    function renderAttendanceRecordRows(displayRows = attendanceRecordRowsData) {
+      attendanceRecordTbody.innerHTML = "";
+      const checkAll = document.getElementById("attendanceRecordCheckAll");
+      if (checkAll) checkAll.checked = false;
+      displayRows.forEach((row, index) => {
+        const tr = document.createElement("tr");
+        const checkTd = document.createElement("td");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.className = "table-check attendance-record-check";
+        checkbox.setAttribute("aria-label", `选择${row.empName}`);
+        checkTd.appendChild(checkbox);
+        tr.appendChild(checkTd);
+        [
+          row.empName,
+          row.empNo,
+          attendanceRecordDeptPart(row, 0),
+          attendanceRecordDeptPart(row, 1),
+          attendanceRecordDeptPart(row, 2),
+          attendanceRecordDeptPart(row, 3),
+          attendanceRecordDeptPart(row, 4),
+          attendanceRecordDeptPart(row, 5),
+          attendanceRecordDeptPart(row, 6),
+          row.date,
+          row.week,
+          attendanceRecordLocation(row),
+          row.shift,
+          row.attr,
+          row.shiftStart || attendanceRecordShiftTime(row, "start"),
+          row.shiftEnd || attendanceRecordShiftTime(row, "end"),
+          row.workHours,
+          row.actualHours,
+          row.firstClock,
+          row.actualFirstClock || row.firstClock,
+          row.lastClock,
+          row.actualLastClock || row.lastClock,
+          row.rawFirstClock || row.firstClock,
+          row.rawLastClock || row.lastClock,
+          row.repairFirstClock || (row.repairStatus === "已补签" ? row.firstClock : "--"),
+          row.repairLastClock || (row.repairStatus === "已补签" || row.repairStatus === "审批中" ? row.lastClock : "--"),
+          row.absentHours,
+          row.remark,
+          row.status,
+          row.repairStatus,
+          row.exceptionRemark,
+          row.lateMinutes,
+          row.earlyMinutes,
+          row.homeOfficeHours || (row.shift.includes("美国") ? row.workHours : "0"),
+          row.sealStatus || "未封存",
+          row.calculateStatus || "已计算",
+          row.calculateTime || row.updatedAt,
+          row.calculateBy || row.updatedBy
+        ].forEach((value, cellIndex) => {
+          const td = shiftCell(value, "");
+          if (cellIndex === 28) {
+            td.innerHTML = "";
+            const tag = document.createElement("span");
+            tag.className = `status-tag${myAttendanceStatusClass(row.status)}`;
+            tag.textContent = row.status;
+            td.appendChild(tag);
+          }
+          tr.appendChild(td);
+        });
+        const actionTd = document.createElement("td");
+        const actions = document.createElement("span");
+        actions.className = "row-actions";
+        actions.appendChild(holidayIconButton("补卡", "plus", () => showToast("补卡为静态原型展示")));
+
+        const moreWrap = document.createElement("span");
+        moreWrap.className = "more-actions";
+        const moreBtn = holidayIconButton("更多", "more", (event) => {
+          event.stopPropagation();
+          document.querySelectorAll(".attendance-record-table .more-actions.open").forEach((item) => {
+            if (item !== moreWrap) item.classList.remove("open");
+          });
+          moreWrap.classList.toggle("open");
+        });
+        moreWrap.appendChild(moreBtn);
+        const moreMenu = document.createElement("span");
+        moreMenu.className = "more-menu";
+        ["请假", "公出", "出差"].forEach((label) => {
+          const item = holidayMoreMenuButton(label, "plus", (event) => {
+            event.stopPropagation();
+            moreWrap.classList.remove("open");
+            showToast(`${label}为静态原型展示`);
+          });
+          moreMenu.appendChild(item);
+        });
+        moreWrap.appendChild(moreMenu);
+        actions.appendChild(moreWrap);
+        actionTd.appendChild(actions);
+        tr.appendChild(actionTd);
+        attendanceRecordTbody.appendChild(tr);
+      });
+
+      const homeOfficeTotal = displayRows.reduce((sum, row) => sum + attendanceNumber(row.homeOfficeHours || (row.shift.includes("美国") ? row.workHours : "0")), 0);
+      const actualTotal = displayRows.reduce((sum, row) => sum + attendanceNumber(row.actualHours), 0);
+      const workTotal = displayRows.reduce((sum, row) => sum + attendanceNumber(row.workHours), 0);
+      const exceptionTotal = displayRows.filter((row) => row.status !== "正常").length;
+      document.getElementById("attendanceRecordExpectedTotal").textContent = formatAttendanceTotal(homeOfficeTotal);
+      document.getElementById("attendanceRecordActualTotal").textContent = formatAttendanceTotal(actualTotal);
+      document.getElementById("attendanceRecordWorkTotal").textContent = formatAttendanceTotal(workTotal);
+      document.getElementById("attendanceRecordExceptionTotal").textContent = exceptionTotal;
+      attendanceRecordTotalText.textContent = `共${displayRows.length}条`;
+    }
+
     function feishuUserStatusClass(status) {
       if (status === "试用") return " trial";
       if (status === "离职") return " leave";
@@ -12278,7 +13184,8 @@
           row.endRound
         ].forEach((value) => tr.appendChild(shiftCell(value)));
 
-        tr.appendChild(scopeCell(row));
+        tr.appendChild(scopeColumnCell(row, ["适用组织", "部门"]));
+        tr.appendChild(scopeColumnCell(row, ["划分区域"]));
 
         [
           row.late,
@@ -12357,11 +13264,17 @@
 
     function updateRestTypeAvailability() {
       const elasticMode = document.getElementById("shiftTypeInput").value === "弹性班次";
+      const freeMode = document.getElementById("shiftTypeInput").value === "自由班次";
+      const timeTab = document.querySelector('#restTabs button[data-rest-tab="time"]');
       const durationTab = document.querySelector('#restTabs button[data-rest-tab="duration"]');
+      timeTab.disabled = freeMode;
+      timeTab.title = freeMode ? "自由班次仅支持休息按时长休" : "";
       durationTab.disabled = elasticMode;
       durationTab.title = elasticMode ? "弹性班次仅支持按时间段休息" : "";
       if (elasticMode && durationTab.classList.contains("active")) {
         setRestTab("time");
+      } else if (freeMode && timeTab.classList.contains("active")) {
+        setRestTab("duration");
       } else {
         updateRestFields();
       }
@@ -12385,9 +13298,6 @@
     function scopeRangeOptions(condition) {
       if (condition === "部门") {
         return uniqueFilled(people.flatMap((person) => [person.d2, person.d3, person.d4, person.d6, person.d7, person.d8]));
-      }
-      if (condition === "办公地点") {
-        return uniqueFilled(people.map((person) => person.d5));
       }
       return scopeRangeDefaults[condition] || [];
     }
@@ -12533,6 +13443,14 @@
       return { valid: true, rules: completed };
     }
 
+    function scopeRangesText(rules, conditionNames) {
+      const allowed = new Set(conditionNames);
+      return rules
+        .filter((rule) => allowed.has(rule.condition))
+        .flatMap((rule) => rule.ranges)
+        .join("、");
+    }
+
     function scopeRulesText(rules) {
       return rules.map((rule) => `${rule.condition}：${rule.ranges.join("、")}`).join("；");
     }
@@ -12552,6 +13470,11 @@
       document.getElementById("elasticTypeField").hidden = !elasticMode;
       document.getElementById("elasticDurationField").hidden = !elasticMode;
       document.getElementById("shiftMoreSettings").hidden = freeMode;
+      document.getElementById("roundingPanel").hidden = freeMode;
+      if (freeMode) {
+        document.getElementById("roundingNo").checked = true;
+        document.getElementById("roundingFields").hidden = true;
+      }
       if (flexibleTimeMode) {
         document.getElementById("shiftStartInput").value = "";
         document.getElementById("shiftStartLatestInput").value = "";
@@ -13179,6 +14102,33 @@
     document.getElementById("clockExport").addEventListener("click", () => showToast("打卡记录导出任务已创建"));
     document.getElementById("clockExportSetting").addEventListener("click", () => showToast("导出设置沿用打卡记录表头"));
 
+    document.getElementById("resetAttendanceRecord").addEventListener("click", () => {
+      document.getElementById("attendanceRecordEmployee").value = "";
+      document.getElementById("attendanceRecordDept").selectedIndex = 0;
+      document.getElementById("attendanceRecordStatus").selectedIndex = 0;
+      document.getElementById("attendanceRecordRepairStatus").selectedIndex = 0;
+      document.getElementById("attendanceRecordDivideArea").selectedIndex = 0;
+      document.getElementById("attendanceRecordExceptionRemark").selectedIndex = 0;
+      document.getElementById("attendanceRecordLocation").selectedIndex = 0;
+      document.getElementById("attendanceRecordCalculateStatus").selectedIndex = 0;
+      document.getElementById("attendanceRecordDate").value = "2026/09/07   ~   2026/09/22";
+      renderAttendanceRecordRows();
+      showToast("考勤记录查询条件已重置");
+    });
+    document.getElementById("searchAttendanceRecord").addEventListener("click", () => showToast("考勤记录查询完成"));
+    document.getElementById("attendanceRecordRecalculate").addEventListener("click", () => showToast("考勤记录重新计算任务已提交"));
+    document.getElementById("attendanceRecordBatchRepair").addEventListener("click", () => showToast("批量补签为静态原型展示"));
+    document.getElementById("attendanceRecordExport").addEventListener("click", () => showToast("考勤记录导出任务已创建"));
+    document.getElementById("attendanceRecordExportSetting").addEventListener("click", () => showToast("导出设置沿用考勤记录表头"));
+    document.getElementById("attendanceRecordCheckAll").addEventListener("change", (event) => {
+      document.querySelectorAll(".attendance-record-check").forEach((checkbox) => {
+        checkbox.checked = event.target.checked;
+      });
+    });
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".attendance-record-table .more-actions.open").forEach((item) => item.classList.remove("open"));
+    });
+
     document.getElementById("resetArrangementShift").addEventListener("click", () => {
       document.getElementById("arrangeEmployee").value = "";
       document.getElementById("arrangeTime").value = "2026/09/14 ~ 2026/09/20";
@@ -13559,7 +14509,8 @@
 
       const restFlag = restRadioValue("restFlag");
       const roundingFlag = restRadioValue("roundingFlag");
-      const scopeSummary = scopeRulesText(scopeResult.rules);
+      const scopeOrgText = scopeRangesText(scopeResult.rules, ["部门"]);
+      const scopeAreaText = scopeRangesText(scopeResult.rules, ["划分区域"]);
       const restType = activeRestType();
       const timeRestRules = timeRestRuleRows();
       const durationRestRules = durationRestRuleRows();
@@ -13605,8 +14556,8 @@
         startRound: roundingFlag === "是" ? document.getElementById("roundStartInput").value : "--",
         endRound: roundingFlag === "是" ? document.getElementById("roundEndInput").value : "--",
         scopeRules: scopeResult.rules.map((rule) => ({ condition: rule.condition, ranges: [...rule.ranges] })),
-        org: scopeResult.rules.map((rule) => rule.condition).join("、"),
-        area: scopeSummary,
+        org: scopeOrgText,
+        area: scopeAreaText,
         late: document.getElementById("lateMinuteInput").value || "--",
         exempt: document.getElementById("exemptNumberInput").value || "--",
         absent: document.getElementById("startAbsentInput").value || "--",
@@ -13717,6 +14668,63 @@
       });
     });
 
+    document.getElementById("searchAttendanceProject").addEventListener("click", () => {
+      renderAttendanceProjectRows();
+      showToast("考勤项目配置查询完成");
+    });
+
+    document.getElementById("resetAttendanceProject").addEventListener("click", () => {
+      document.getElementById("attendanceProjectQueryName").value = "";
+      [
+        "attendanceProjectQueryCategory1",
+        "attendanceProjectQueryCategory2",
+        "attendanceProjectQueryFormat",
+        "attendanceProjectQueryType",
+        "attendanceProjectQueryPosition",
+        "attendanceProjectQueryRelation",
+        "attendanceProjectQueryDefault",
+        "attendanceProjectQuerySource",
+        "attendanceProjectQueryPreset"
+      ].forEach((id) => {
+        document.getElementById(id).selectedIndex = 0;
+      });
+      renderAttendanceProjectRows();
+      showToast("考勤项目配置查询条件已重置");
+    });
+
+    document.getElementById("openAttendanceProjectAdd").addEventListener("click", () => {
+      document.getElementById("attendanceProjectModalTitle").textContent = "新增考勤项目";
+      document.getElementById("attendanceProjectName").value = "";
+      document.getElementById("attendanceProjectDesc").value = "";
+      openModal("attendanceProjectModal");
+    });
+    document.getElementById("attendanceProjectImport").addEventListener("click", () => showToast("考勤项目导入为静态原型展示"));
+    document.getElementById("attendanceProjectExport").addEventListener("click", () => showToast("考勤项目导出任务已创建"));
+    document.getElementById("attendanceProjectExportSetting").addEventListener("click", () => showToast("导出设置沿用考勤项目配置表头"));
+    document.getElementById("confirmAttendanceProject").addEventListener("click", () => {
+      if (!document.getElementById("attendanceProjectName").value.trim()) {
+        showToast("请输入考勤项目名称");
+        return;
+      }
+      closeModal("attendanceProjectModal");
+      showToast("考勤项目已保存");
+    });
+
+    document.getElementById("searchAttendanceFormula").addEventListener("click", () => {
+      renderAttendanceFormulaRows();
+      showToast("考勤函数配置查询完成");
+    });
+    document.getElementById("resetAttendanceFormula").addEventListener("click", () => {
+      document.getElementById("attendanceFormulaQueryName").value = "";
+      document.getElementById("attendanceFormulaQueryUpdater").value = "";
+      document.getElementById("attendanceFormulaQueryScene").selectedIndex = 0;
+      document.getElementById("attendanceFormulaQueryStatus").selectedIndex = 0;
+      renderAttendanceFormulaRows();
+      showToast("考勤函数配置查询条件已重置");
+    });
+    document.getElementById("openAttendanceFormulaAdd").addEventListener("click", () => showToast("新增函数为静态原型展示"));
+    document.getElementById("attendanceFormulaExport").addEventListener("click", () => showToast("考勤函数导出任务已创建"));
+
     document.getElementById("searchHoliday").addEventListener("click", () => {
       renderHolidayRows(filteredHolidayRows());
       showToast("节假日配置查询完成");
@@ -13824,7 +14832,7 @@
     });
 
     document.getElementById("resetMyMonthlyReport").addEventListener("click", () => {
-      resetMonthlyReportRange("myMonthlyStartMonth", "myMonthlyEndMonth");
+      resetMonthlyReportRange("myMonthlyRange");
       renderMyMonthlyReportRows();
       showToast("我的月报查询条件已重置");
     });
@@ -13840,7 +14848,7 @@
     document.getElementById("resetTeamMonthlyReport").addEventListener("click", () => {
       document.getElementById("teamMonthlyName").selectedIndex = 0;
       document.getElementById("teamMonthlyDept").selectedIndex = 0;
-      resetMonthlyReportRange("teamMonthlyStartMonth", "teamMonthlyEndMonth");
+      resetMonthlyReportRange("teamMonthlyRange");
       renderTeamMonthlyReportRows();
       showToast("团队月报查询条件已重置");
     });
@@ -13881,12 +14889,15 @@
     renderMyMonthlyReportRows();
     renderTeamMonthlyReportRows();
     renderClockRows();
+    renderAttendanceRecordRows();
     renderFeishuClockUserRows();
     renderHolidayRows();
     renderHolidayDetailRows();
     renderShiftRows();
     renderAccountingPackageRows();
     renderAttendanceSchemeRows();
+    renderAttendanceProjectRows();
+    renderAttendanceFormulaRows();
     renderSchemeAttendanceListRows();
     renderSchemeMonthListRows();
     updateNoticeList();
