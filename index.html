@@ -3502,7 +3502,16 @@
     }
 
     .formula-platform-table {
-      min-width: 1508px;
+      min-width: 1000px;
+    }
+
+    .formula-platform-table th:last-child,
+    .formula-platform-table td:last-child {
+      overflow: visible;
+    }
+
+    .formula-platform-table .more-menu {
+      z-index: 30;
     }
 
     .attendance-project-modal-body {
@@ -4761,6 +4770,7 @@
         <div class="menu-item" data-page-tab="cycle">考勤周期配置</div>
         <div class="menu-item" data-page-tab="attendanceScheme">考勤方案配置</div>
         <div class="menu-item" data-page-tab="attendanceProject">考勤项目配置</div>
+        <div class="menu-item" data-page-tab="formulaPlatform">考勤公式平台</div>
         <div class="menu-item" data-page-tab="attendanceFormula">考勤函数配置</div>
         <div class="menu-item" data-page-tab="holiday">节假日配置</div>
         <div class="menu-item" data-page-tab="feishuClockSyncRule">打卡记录同步配置</div>
@@ -4786,6 +4796,7 @@
           <span class="nav-tab" data-page-tab="cycle">考勤周期配置</span>
           <span class="nav-tab" data-page-tab="attendanceScheme">考勤方案配置</span>
           <span class="nav-tab" data-page-tab="attendanceProject">考勤项目配置</span>
+          <span class="nav-tab" data-page-tab="formulaPlatform">考勤公式平台</span>
           <span class="nav-tab" data-page-tab="attendanceFormula">考勤函数配置</span>
           <span class="nav-tab" data-page-tab="holiday">节假日配置</span>
           <span class="nav-tab" data-page-tab="feishuClockSyncRule">打卡记录同步配置</span>
@@ -5498,9 +5509,6 @@
                   <option>全部</option>
                   <option>正常</option>
                   <option>异常</option>
-                  <option>缺卡</option>
-                  <option>迟到</option>
-                  <option>早退</option>
                 </select>
               </label>
               <label>
@@ -5639,9 +5647,6 @@
                   <option>全部</option>
                   <option>正常</option>
                   <option>异常</option>
-                  <option>缺卡</option>
-                  <option>迟到</option>
-                  <option>早退</option>
                 </select>
               </label>
               <label>
@@ -6878,14 +6883,50 @@
           </section>
         </div>
 
+        <div class="page-view" data-page="formulaPlatform">
+          <section class="query-panel" aria-label="考勤公式平台查询条件">
+            <div class="panel-title">查询条件</div>
+            <div class="query-grid scheme">
+              <label><span class="field-label">公式名称</span><input id="formulaPlatformQueryName" type="text" placeholder="请输入"></label>
+              <label><span class="field-label">适用场景</span><select id="formulaPlatformQueryScene"><option>请选择</option><option>考勤项目</option><option>日报汇总</option><option>周期报汇总</option><option>异常处理</option></select></label>
+              <label><span class="field-label">状态</span><select id="formulaPlatformQueryStatus"><option>全部</option><option>启用</option><option>停用</option></select></label>
+              <label><span class="field-label">最近修改人</span><input id="formulaPlatformQueryUpdater" type="text" placeholder="请通过工号/姓名搜索"></label>
+            </div>
+            <div class="query-actions">
+              <button type="button" class="ghost" id="resetFormulaPlatform">⟳ 重置</button>
+              <button type="button" class="primary" id="searchFormulaPlatform">⌕ 查询</button>
+            </div>
+          </section>
+
+          <section class="table-panel" aria-label="考勤公式平台列表">
+            <div class="toolbar">
+              <button type="button" class="primary" id="openFormulaPlatformAdd">+ 新增公式</button>
+              <button type="button" id="formulaPlatformImport">⇧ 导入</button>
+              <button type="button" id="formulaPlatformExport">⇩ 导出</button>
+              <button type="button" id="formulaPlatformExportSetting">导出设置</button>
+            </div>
+            <div class="table-wrap">
+              <table class="formula-platform-table">
+                <colgroup><col style="width: 58px"><col style="width: 170px"><col style="width: 110px"><col style="width: 160px"><col style="width: 90px"><col style="width: 130px"><col style="width: 170px"><col style="width: 112px"></colgroup>
+                <thead><tr><th class="center">序号</th><th>名称</th><th>编码</th><th>考勤项目</th><th>状态</th><th>最近修改人</th><th>最近修改时间</th><th>操作</th></tr></thead>
+                <tbody id="formulaPlatformRows"></tbody>
+              </table>
+            </div>
+            <div class="pager">
+              <span id="formulaPlatformTotalText">共0条</span>
+              <span class="pager-link">&lt;</span><span class="page-no">1</span><span class="pager-link">&gt;</span>
+              <select aria-label="每页条数"><option>20 条/页</option><option>50 条/页</option></select>
+            </div>
+          </section>
+        </div>
+
         <div class="page-view" data-page="attendanceFormula">
           <section class="query-panel" aria-label="考勤函数配置查询条件">
             <div class="panel-title">查询条件</div>
             <div class="query-grid scheme">
-              <label><span class="field-label">函数名称</span><input id="attendanceFormulaQueryName" type="text" placeholder="请输入"></label>
-              <label><span class="field-label">适用场景</span><select id="attendanceFormulaQueryScene"><option>请选择</option><option>考勤项目</option><option>日报汇总</option><option>周期报汇总</option></select></label>
-              <label><span class="field-label">状态</span><select id="attendanceFormulaQueryStatus"><option>全部</option><option>启用</option><option>停用</option></select></label>
-              <label><span class="field-label">最近修改人</span><input id="attendanceFormulaQueryUpdater" type="text" placeholder="请通过工号/姓名搜索"></label>
+              <label><span class="field-label">名称</span><input id="attendanceFormulaQueryName" type="text" placeholder="请输入"></label>
+              <label><span class="field-label">分类</span><select id="attendanceFormulaQueryCategory"><option>请选择</option><option>考勤</option><option>薪酬</option></select></label>
+              <label><span class="field-label">是否可选参数</span><select id="attendanceFormulaQueryOptional"><option>请选择</option><option>是</option><option>否</option></select></label>
             </div>
             <div class="query-actions">
               <button type="button" class="ghost" id="resetAttendanceFormula">⟳ 重置</button>
@@ -6895,17 +6936,33 @@
 
           <section class="table-panel" aria-label="考勤函数配置列表">
             <div class="toolbar">
-              <button type="button" class="primary" id="openAttendanceFormulaAdd">+ 新增函数</button>
               <button type="button" id="attendanceFormulaExport">⇩ 导出</button>
+              <button type="button" id="attendanceFormulaExportSetting">导出设置</button>
             </div>
             <div class="table-wrap">
               <table class="attendance-formula-table">
-                <colgroup><col style="width: 58px"><col style="width: 220px"><col style="width: 160px"><col style="width: 360px"><col style="width: 100px"><col style="width: 160px"><col style="width: 170px"><col style="width: 130px"></colgroup>
-                <thead><tr><th class="center">序号</th><th>函数名称</th><th>适用场景</th><th>函数说明</th><th>状态</th><th>最近修改人</th><th>最近修改时间</th><th>操作</th></tr></thead>
+                <colgroup>
+                  <col style="width: 58px">
+                  <col style="width: 260px">
+                  <col style="width: 130px">
+                  <col style="width: 130px">
+                  <col style="width: 140px">
+                  <col style="width: 462px">
+                </colgroup>
+                <thead><tr><th class="center">序号</th><th>名称</th><th>编码</th><th>分类</th><th>是否可选参数</th><th>函数说明</th></tr></thead>
                 <tbody id="attendanceFormulaRows"></tbody>
               </table>
             </div>
-            <div class="pager"><span id="attendanceFormulaTotalText">共4条</span><span class="pager-link">&lt;</span><span class="page-no">1</span><span class="pager-link">&gt;</span><select aria-label="每页条数"><option>20 条/页</option><option>50 条/页</option></select></div>
+            <div class="pager">
+              <span id="attendanceFormulaTotalText">共51条</span>
+              <span class="pager-link">&lt;</span>
+              <span class="page-no">1</span>
+              <span class="pager-link">2</span>
+              <span class="pager-link">3</span>
+              <span class="pager-link">&gt;</span>
+              <select aria-label="每页条数"><option>20 条/页</option><option>50 条/页</option></select>
+              <span>跳至</span><input type="text" aria-label="跳转页码"><span>页</span>
+            </div>
           </section>
         </div>
 
@@ -9668,10 +9725,33 @@
     ];
 
     const attendanceFormulaRowsData = [
-      { name: "工作时长计算函数", scene: "考勤项目", desc: "按班次、打卡记录和请假数据计算每日工作时长。", status: "启用", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/25 17:39:43" },
-      { name: "日报总工时函数", scene: "日报汇总", desc: "汇总工作时长、休假时长和加班时长，生成日报展示值。", status: "启用", updatedBy: "陈南(zt06293)", updatedAt: "2026/08/20 11:12:05" },
-      { name: "周期汇总函数", scene: "周期报汇总", desc: "按考勤周期汇总迟到、早退、缺勤和出勤相关指标。", status: "启用", updatedBy: "雷佳俊(zt20292)", updatedAt: "2026/08/18 15:26:31" },
-      { name: "异常天数函数", scene: "周期报汇总", desc: "统计周期内存在迟到、早退、缺卡或缺勤的异常天数。", status: "停用", updatedBy: "黄东升(zt21197)", updatedAt: "2026/07/30 09:51:09" }
+      { name: "取排班当天对应的节假日名称", code: "FC00001", category: "考勤", optional: "是", desc: "含义 获取指定班次属性当天的节假日名称。参数 取排班当天对应的节假日名称(班次属性)。班次属性：工作日、公休日、节假日。" },
+      { name: "取排班当天对应的节假日时长", code: "FC00002", category: "考勤", optional: "是", desc: "含义 获取指定班次属性当天的节假日时长。参数 取排班当天对应的节假日时长(班次属性)。班次属性：工作日、公休日、节假日。" },
+      { name: "取每日的休假时长", code: "FC00003", category: "考勤", optional: "是", desc: "含义 获取指定休假类型、指定班次属性、指定审批状态的每日休假时长。参数 取每日的休假时长(休假类型,班次属性,审批状态)。" },
+      { name: "取指定单据类型的每日时长", code: "FC00004", category: "考勤", optional: "是", desc: "含义 获取指定审批状态的指定单据时长。参数 取指定单据类型的每日时长(单据类型,审批状态)。单据类型包含出差、公出、居家办公等。" },
+      { name: "取两个时间点之间相差时长", code: "FC00005", category: "考勤", optional: "是", desc: "含义 计算两个时间之间的差值，并按单位(小时/分钟)返回计算结果。参数 取两个时间点之间相差时长(考勤项目1,考勤项目2,单位)。" },
+      { name: "取应出勤时长", code: "FC00006", category: "考勤", optional: "是", desc: "含义 获取指定班次属性当天应出勤时长。参数 取应出勤时长(班次属性,单位)。班次属性可多选，单位支持小时、分钟。" },
+      { name: "MIN", code: "FC00007", category: "考勤", optional: "是", desc: "含义 获取数值数据集中的最小值。参数 MIN(值1,值2)。值为参与计算最小值的考勤项目或数值。" },
+      { name: "MAX", code: "FC00008", category: "考勤", optional: "是", desc: "含义 获取数值数据集中的最大值。参数 MAX(值1,值2)。值为参与计算最大值的考勤项目或数值。" },
+      { name: "取带薪或无薪假时长", code: "FC00009", category: "考勤", optional: "是", desc: "含义 获取带薪或无薪假时长。参数 取带薪或无薪假时长(是否带薪,休假类型,审批状态)。" },
+      { name: "取澳洲的节假日时长", code: "FC00010", category: "考勤", optional: "否", desc: "含义 获取澳洲节假日班次当天的节假日时长。示例 圣诞节员工当天上节假日班次时，按特定逻辑返回节假日时长。" },
+      { name: "取每日的休假类型", code: "FC00011", category: "考勤", optional: "是", desc: "含义 获取指定休假类型、指定班次属性、指定审批状态的每日休假类型。参数 取每日的休假类型(休假类型,班次属性,审批状态)。" },
+      { name: "取指定表的指定数值字段", code: "FC00012", category: "考勤", optional: "是", desc: "含义 获取指定表的指定数值字段的值。参数 取指定表的指定数值字段(指定表,指定字段,类型)。指定表可包含加班记录、调休假结算明细等。" },
+      { name: "取指定表的指定枚举字段", code: "FC00013", category: "考勤", optional: "是", desc: "含义 获取指定表的指定枚举字段的值。参数 取指定表的指定枚举字段(指定表,指定字段,类型)。" },
+      { name: "取实际休息时间", code: "FC00014", category: "考勤", optional: "是", desc: "含义 获取员工实际的休息开始、结束时间。参数 取实际休息时间(休息段,时间类型,取卡范围,优先匹配位置)。" },
+      { name: "取周期报表考勤周期内的指定考勤项目汇总", code: "FC00015", category: "薪酬", optional: "是", desc: "含义 获取考勤周期报表中，指定考勤周期的指定考勤项目。指定考勤周期指发薪活动中的计薪周期。" },
+      { name: "取日报考勤周期内指定节假日指定考勤项目汇总", code: "FC00016", category: "薪酬", optional: "是", desc: "含义 获取考勤周期报表中，指定考勤周期指定节假日的指定考勤项目汇总。" },
+      { name: "取周期报表考勤周期指定节假日前指定时间段的指定考勤项目汇总", code: "FC00017", category: "薪酬", optional: "是", desc: "含义 获取考勤周期报表中，指定考勤周期指定节假日前指定时间段的指定考勤项目。" },
+      { name: "取指定节假日前指定时间段内其他假期薪资汇总", code: "FC00018", category: "薪酬", optional: "是", desc: "含义 获取指定节假日前指定时间段的其他节假日薪资汇总。" },
+      { name: "取考勤周期内自然日天数", code: "FC00019", category: "薪酬", optional: "否", desc: "含义 获取考勤周期内自然日天数。指定考勤周期指发薪活动中的计薪周期。" },
+      { name: "取考勤周期内在职自然日天数", code: "FC00020", category: "薪酬", optional: "否", desc: "含义 获取考勤周期内在职自然日天数。用于薪酬周期内在职天数计算。" }
+    ];
+
+    const formulaPlatformRowsData = [
+      { name: "缺卡次数", code: "AF00153", item: "缺卡次数", status: "启用", updatedBy: "雷佳俊", updatedAt: "2026/09/23 09:10:17" },
+      { name: "迟到分钟", code: "AF00146", item: "迟到分钟", status: "启用", updatedBy: "陈南", updatedAt: "2026/09/18 15:26:31" },
+      { name: "早退分钟", code: "AF00147", item: "早退分钟", status: "启用", updatedBy: "雷佳俊", updatedAt: "2026/09/18 15:24:08" },
+      { name: "居家办公时长", code: "AF00158", item: "居家办公时长", status: "停用", updatedBy: "黄东升", updatedAt: "2026/09/12 11:18:42" }
     ];
 
     const schemeAttendanceListDefaults = [
@@ -10834,6 +10914,7 @@
     const myMonthlyReportTbody = document.getElementById("myMonthlyReportRows");
     const teamMonthlyReportTbody = document.getElementById("teamMonthlyReportRows");
     const attendanceProjectTbody = document.getElementById("attendanceProjectRows");
+    const formulaPlatformTbody = document.getElementById("formulaPlatformRows");
     const attendanceFormulaTbody = document.getElementById("attendanceFormulaRows");
     const holidayTbody = document.getElementById("holidayRows");
     const holidayDetailTbody = document.getElementById("holidayDetailRows");
@@ -10849,6 +10930,7 @@
     const myMonthlyReportTotalText = document.getElementById("myMonthlyReportTotalText");
     const teamMonthlyReportTotalText = document.getElementById("teamMonthlyReportTotalText");
     const attendanceProjectTotalText = document.getElementById("attendanceProjectTotalText");
+    const formulaPlatformTotalText = document.getElementById("formulaPlatformTotalText");
     const attendanceFormulaTotalText = document.getElementById("attendanceFormulaTotalText");
     const holidayTotalText = document.getElementById("holidayTotalText");
     const toast = document.getElementById("toast");
@@ -10956,21 +11038,72 @@
 
     function renderAttendanceFormulaRows(displayRows = attendanceFormulaRowsData) {
       attendanceFormulaTbody.innerHTML = "";
+      displayRows.slice(0, 20).forEach((row, index) => {
+        const tr = document.createElement("tr");
+        [String(index + 1), row.name, row.code, row.category, row.optional].forEach((value, cellIndex) => {
+          tr.appendChild(cell(value, cellIndex === 0 ? "center" : "", value));
+        });
+        const descTd = cell(row.desc, "", row.desc);
+        if (row.desc.length > 70) {
+          descTd.textContent = `${row.desc.slice(0, 70)}... `;
+          const more = document.createElement("button");
+          more.type = "button";
+          more.className = "link";
+          more.textContent = "更多";
+          more.addEventListener("click", () => showToast("函数说明详情为静态原型展示"));
+          descTd.appendChild(more);
+        }
+        tr.appendChild(descTd);
+        attendanceFormulaTbody.appendChild(tr);
+      });
+      attendanceFormulaTotalText.textContent = displayRows.length === attendanceFormulaRowsData.length ? "共51条" : `共${displayRows.length}条`;
+    }
+
+    function renderFormulaPlatformRows(displayRows = formulaPlatformRowsData) {
+      formulaPlatformTbody.innerHTML = "";
       displayRows.forEach((row, index) => {
         const tr = document.createElement("tr");
-        [String(index + 1), row.name, row.scene, row.desc, row.status, row.updatedBy, row.updatedAt].forEach((value, cellIndex) => {
-          tr.appendChild(cell(value, cellIndex === 0 ? "center" : "", value));
+        [
+          String(index + 1),
+          row.name,
+          row.code,
+          row.item,
+          row.status,
+          row.updatedBy,
+          row.updatedAt
+        ].forEach((value, cellIndex) => {
+          const td = cell(value, cellIndex === 0 ? "center" : "", value);
+          if (cellIndex === 1) {
+            td.innerHTML = "";
+            const link = document.createElement("button");
+            link.type = "button";
+            link.className = "link";
+            link.textContent = row.name;
+            link.addEventListener("click", () => showToast("公式详情为静态原型展示"));
+            td.appendChild(link);
+          }
+          tr.appendChild(td);
         });
         const actionTd = document.createElement("td");
         const actions = document.createElement("span");
         actions.className = "row-actions";
-        actions.appendChild(holidayIconButton("编辑", "edit", () => showToast("函数编辑为静态原型展示")));
-        actions.appendChild(holidayIconButton("复制", "copy", () => showToast("函数复制为静态原型展示")));
+        actions.appendChild(holidayIconButton("编辑", "edit", () => showToast("编辑公式为静态原型展示")));
+        actions.appendChild(holidayIconButton("复制", "copy", () => showToast("复制公式为静态原型展示")));
+        const more = document.createElement("span");
+        more.className = "more-actions";
+        const moreButton = holidayIconButton("更多", "more", () => {}, false);
+        const moreMenu = document.createElement("span");
+        moreMenu.className = "more-menu";
+        moreMenu.appendChild(holidayMoreMenuButton(row.status === "启用" ? "停用" : "启用", "power", () => showToast(`${row.status === "启用" ? "停用" : "启用"}公式为静态原型展示`)));
+        moreMenu.appendChild(holidayMoreMenuButton("删除", "delete", () => showToast("删除公式为静态原型展示"), true));
+        more.appendChild(moreButton);
+        more.appendChild(moreMenu);
+        actions.appendChild(more);
         actionTd.appendChild(actions);
         tr.appendChild(actionTd);
-        attendanceFormulaTbody.appendChild(tr);
+        formulaPlatformTbody.appendChild(tr);
       });
-      attendanceFormulaTotalText.textContent = `共${displayRows.length}条`;
+      formulaPlatformTotalText.textContent = `共${displayRows.length}条`;
     }
 
     const holidayActionIcons = {
@@ -10979,6 +11112,7 @@
       more: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="19" cy="12" r="1.6"></circle></svg>',
       delete: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>',
       copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>',
+      power: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"></path><path d="M18.4 6.6a9 9 0 1 1-12.8 0"></path></svg>',
       minus: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"></path></svg>',
       plus: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>'
     };
@@ -11265,8 +11399,11 @@
 
     function myAttendanceStatusClass(status) {
       if (status === "正常") return "";
-      if (status === "缺卡") return " off";
       return " trial";
+    }
+
+    function attendanceDisplayStatus(status) {
+      return status === "正常" ? "正常" : "异常";
     }
 
     function renderMyAttendanceRows(displayRows = filteredMyAttendanceRows()) {
@@ -11300,8 +11437,9 @@
 
         const statusTd = document.createElement("td");
         const statusTag = document.createElement("span");
-        statusTag.className = `status-tag${myAttendanceStatusClass(row.status)}`;
-        statusTag.textContent = row.status;
+        const displayStatus = attendanceDisplayStatus(row.status);
+        statusTag.className = `status-tag${myAttendanceStatusClass(displayStatus)}`;
+        statusTag.textContent = displayStatus;
         statusTd.appendChild(statusTag);
         tr.appendChild(statusTd);
 
@@ -11421,8 +11559,9 @@
 
         const statusTd = document.createElement("td");
         const statusTag = document.createElement("span");
-        statusTag.className = `status-tag${myAttendanceStatusClass(row.status)}`;
-        statusTag.textContent = row.status;
+        const displayStatus = attendanceDisplayStatus(row.status);
+        statusTag.className = `status-tag${myAttendanceStatusClass(displayStatus)}`;
+        statusTag.textContent = displayStatus;
         statusTd.appendChild(statusTag);
         tr.appendChild(statusTd);
 
@@ -14710,20 +14849,45 @@
       showToast("考勤项目已保存");
     });
 
+    document.getElementById("searchFormulaPlatform").addEventListener("click", () => {
+      renderFormulaPlatformRows();
+      showToast("考勤公式平台查询完成");
+    });
+    document.getElementById("resetFormulaPlatform").addEventListener("click", () => {
+      document.getElementById("formulaPlatformQueryName").value = "";
+      document.getElementById("formulaPlatformQueryUpdater").value = "";
+      document.getElementById("formulaPlatformQueryScene").selectedIndex = 0;
+      document.getElementById("formulaPlatformQueryStatus").selectedIndex = 0;
+      renderFormulaPlatformRows();
+      showToast("考勤公式平台查询条件已重置");
+    });
+    document.getElementById("openFormulaPlatformAdd").addEventListener("click", () => showToast("新增公式为静态原型展示"));
+    document.getElementById("formulaPlatformImport").addEventListener("click", () => showToast("考勤公式平台导入为静态原型展示"));
+    document.getElementById("formulaPlatformExport").addEventListener("click", () => showToast("考勤公式平台导出任务已创建"));
+    document.getElementById("formulaPlatformExportSetting").addEventListener("click", () => showToast("导出设置沿用考勤公式平台表头"));
+
     document.getElementById("searchAttendanceFormula").addEventListener("click", () => {
-      renderAttendanceFormulaRows();
+      const name = document.getElementById("attendanceFormulaQueryName").value.trim();
+      const category = document.getElementById("attendanceFormulaQueryCategory").value;
+      const optional = document.getElementById("attendanceFormulaQueryOptional").value;
+      const displayRows = attendanceFormulaRowsData.filter((row) => {
+        const matchName = !name || row.name.includes(name) || row.code.toLowerCase().includes(name.toLowerCase());
+        const matchCategory = category === "请选择" || row.category === category;
+        const matchOptional = optional === "请选择" || row.optional === optional;
+        return matchName && matchCategory && matchOptional;
+      });
+      renderAttendanceFormulaRows(displayRows);
       showToast("考勤函数配置查询完成");
     });
     document.getElementById("resetAttendanceFormula").addEventListener("click", () => {
       document.getElementById("attendanceFormulaQueryName").value = "";
-      document.getElementById("attendanceFormulaQueryUpdater").value = "";
-      document.getElementById("attendanceFormulaQueryScene").selectedIndex = 0;
-      document.getElementById("attendanceFormulaQueryStatus").selectedIndex = 0;
+      document.getElementById("attendanceFormulaQueryCategory").selectedIndex = 0;
+      document.getElementById("attendanceFormulaQueryOptional").selectedIndex = 0;
       renderAttendanceFormulaRows();
       showToast("考勤函数配置查询条件已重置");
     });
-    document.getElementById("openAttendanceFormulaAdd").addEventListener("click", () => showToast("新增函数为静态原型展示"));
     document.getElementById("attendanceFormulaExport").addEventListener("click", () => showToast("考勤函数导出任务已创建"));
+    document.getElementById("attendanceFormulaExportSetting").addEventListener("click", () => showToast("导出设置沿用考勤函数配置表头"));
 
     document.getElementById("searchHoliday").addEventListener("click", () => {
       renderHolidayRows(filteredHolidayRows());
@@ -14897,6 +15061,7 @@
     renderAccountingPackageRows();
     renderAttendanceSchemeRows();
     renderAttendanceProjectRows();
+    renderFormulaPlatformRows();
     renderAttendanceFormulaRows();
     renderSchemeAttendanceListRows();
     renderSchemeMonthListRows();
