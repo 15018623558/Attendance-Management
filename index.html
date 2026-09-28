@@ -3674,6 +3674,95 @@
       box-shadow: none;
     }
 
+    .scheme-personnel-display {
+      display: grid;
+      gap: 42px;
+      padding: 20px 0 28px;
+    }
+
+    .scheme-personnel-display-section {
+      display: grid;
+      gap: 18px;
+    }
+
+    .scheme-personnel-display-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 24px;
+      color: #1d2530;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .scheme-personnel-display-title::before {
+      content: "";
+      width: 5px;
+      height: 24px;
+      border-radius: 2px;
+      background: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .scheme-personnel-condition-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .scheme-personnel-condition-table th,
+    .scheme-personnel-condition-table td {
+      height: 54px;
+      padding: 0 18px;
+      border-bottom: 1px solid var(--line);
+      color: #5c6675;
+      font-size: 14px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .scheme-personnel-condition-table th {
+      background: #fafafa;
+      color: #252b33;
+      font-weight: 700;
+    }
+
+    .scheme-personnel-condition-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .scheme-personnel-condition-table th:nth-child(1),
+    .scheme-personnel-condition-table td:nth-child(1) {
+      width: 160px;
+    }
+
+    .scheme-personnel-condition-table th:nth-child(3),
+    .scheme-personnel-condition-table td:nth-child(3) {
+      width: 36%;
+    }
+
+    .scheme-personnel-people-line {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      align-items: start;
+      gap: 18px;
+      color: #596373;
+      font-size: 14px;
+      line-height: 24px;
+    }
+
+    .scheme-personnel-people-label {
+      color: #4d5665;
+      font-weight: 600;
+    }
+
+    .scheme-personnel-people-value {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
     .scheme-detail-filter {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -3814,6 +3903,7 @@
       box-shadow: 0 8px 22px rgba(31, 45, 61, .14);
     }
 
+    .more-actions.open .more-menu,
     .more-actions:hover .more-menu,
     .more-actions:focus-within .more-menu {
       display: grid;
@@ -4057,6 +4147,15 @@
 
     .scheme-row-actions .link {
       line-height: 20px;
+    }
+
+    .attendance-scheme-table th:last-child,
+    .attendance-scheme-table td:last-child {
+      overflow: visible;
+    }
+
+    .attendance-scheme-table .row-actions {
+      gap: 10px;
     }
 
     .scheme-move-link {
@@ -4493,6 +4592,10 @@
       min-width: 0;
     }
 
+    .feishu-basic-field.wide {
+      grid-column: 1 / -1;
+    }
+
     .feishu-basic-field .field-label {
       margin: 0;
     }
@@ -4549,6 +4652,40 @@
       border-style: solid;
     }
 
+    .feishu-detail-scope-table {
+      min-width: 620px;
+    }
+
+    .feishu-scope-display-title {
+      font-size: 15px;
+      gap: 10px;
+    }
+
+    .feishu-scope-display-title::before {
+      height: 18px;
+    }
+
+    .feishu-scope-display-title button {
+      margin-left: auto;
+    }
+
+    .feishu-record-query {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      padding-top: 12px;
+    }
+
+    .feishu-record-query .query-grid {
+      display: block;
+      width: min(320px, 100%);
+    }
+
+    .feishu-record-query .query-actions {
+      margin-top: 0;
+      justify-content: flex-start;
+    }
+
     .feishu-sync-frequency {
       min-height: 36px;
       display: grid;
@@ -4571,12 +4708,6 @@
       justify-content: start;
       gap: 8px;
       color: #2f3a4b;
-    }
-
-    .feishu-detail-export {
-      width: 120px;
-      justify-self: start;
-      white-space: nowrap;
     }
 
     .feishu-sync-summary {
@@ -4614,11 +4745,20 @@
 
     .feishu-detail-filter {
       display: grid;
-      grid-template-columns: minmax(180px, 260px) minmax(130px, 180px) auto;
+      grid-template-columns: minmax(180px, 260px) auto;
       align-items: end;
       gap: 10px;
       padding: 12px 14px;
-      border-bottom: 1px solid var(--line);
+    }
+
+    .feishu-detail-filter-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .feishu-detail-filter-actions button {
+      width: 82px;
     }
 
     .modal-actions {
@@ -4800,7 +4940,6 @@
           <span class="nav-tab" data-page-tab="attendanceFormula">考勤函数配置</span>
           <span class="nav-tab" data-page-tab="holiday">节假日配置</span>
           <span class="nav-tab" data-page-tab="feishuClockSyncRule">打卡记录同步配置</span>
-          <span class="nav-tab" data-page-tab="feishuClockSyncRecords">飞书打卡同步记录</span>
           <span class="nav-tab" data-page-tab="shift">班次配置</span>
           <span class="nav-tab" data-page-tab="whitelist">白名单配置</span>
           <span class="shift-create-tab">新增班次设置</span>
@@ -7175,13 +7314,13 @@
                     <td>张三</td>
                     <td>
                       <span class="row-actions">
-                        <button type="button" class="icon-action" title="编辑" aria-label="编辑" data-feishu-rule-action="edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
+                        <button type="button" class="icon-action" title="编辑" aria-label="编辑" data-feishu-rule-action="edit" data-rule-index="0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
                         <button type="button" class="icon-action" title="停用" aria-label="停用"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"></path><path d="M18.4 6.6a9 9 0 1 1-12.8 0"></path></svg></button>
                         <span class="more-actions">
                           <button type="button" class="icon-action" title="更多" aria-label="更多"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="19" cy="12" r="1.6"></circle></svg></button>
                           <span class="more-menu">
                             <button type="button" data-feishu-rule-action="manual-sync">手动同步</button>
-                            <button type="button" data-feishu-rule-action="log">同步记录</button>
+                            <button type="button" data-feishu-rule-action="log" data-rule-index="0">同步记录</button>
                           </span>
                         </span>
                       </span>
@@ -7196,13 +7335,13 @@
                     <td>李四</td>
                     <td>
                       <span class="row-actions">
-                        <button type="button" class="icon-action" title="编辑" aria-label="编辑" data-feishu-rule-action="edit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
+                        <button type="button" class="icon-action" title="编辑" aria-label="编辑" data-feishu-rule-action="edit" data-rule-index="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
                         <button type="button" class="icon-action" title="启用" aria-label="启用"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"></path><path d="M18.4 6.6a9 9 0 1 1-12.8 0"></path></svg></button>
                         <span class="more-actions">
                           <button type="button" class="icon-action" title="更多" aria-label="更多"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="19" cy="12" r="1.6"></circle></svg></button>
                           <span class="more-menu">
                             <button type="button" data-feishu-rule-action="manual-sync">手动同步</button>
-                            <button type="button" data-feishu-rule-action="log">同步记录</button>
+                            <button type="button" data-feishu-rule-action="log" data-rule-index="1">同步记录</button>
                           </span>
                         </span>
                       </span>
@@ -7224,116 +7363,291 @@
           </section>
         </div>
 
+        <div class="page-view" data-page="feishuClockSyncRuleDetail">
+          <div class="scheme-detail-body">
+            <section class="form-panel" aria-label="打卡记录同步配置详情基础信息">
+              <div class="form-panel-head">
+                <span>基础信息</span>
+                <button type="button" class="icon-action" title="编辑" aria-label="编辑基础信息" id="openFeishuDetailBasicEdit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
+              </div>
+              <div class="scheme-detail-summary">
+                <div class="scheme-detail-field">
+                  <div class="scheme-detail-label">规则名称</div>
+                  <div class="scheme-detail-value" id="feishuDetailName">--</div>
+                </div>
+                <div class="scheme-detail-field">
+                  <div class="scheme-detail-label">划分区域</div>
+                  <div class="scheme-detail-value" id="feishuDetailArea">--</div>
+                </div>
+                <div class="scheme-detail-field">
+                  <div class="scheme-detail-label">状态</div>
+                  <div class="scheme-detail-value" id="feishuDetailStatus">--</div>
+                </div>
+                <div class="scheme-detail-field scheme-detail-wide">
+                  <div class="scheme-detail-label">描述</div>
+                  <div class="scheme-detail-value" id="feishuDetailDesc">--</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="table-panel" aria-label="打卡记录同步配置详情">
+              <div class="scheme-detail-tabs">
+                <button type="button" class="active" data-feishu-detail-tab="scope">同步范围设置</button>
+                <button type="button" data-feishu-detail-tab="records">同步记录</button>
+              </div>
+
+              <div class="scheme-detail-panel active" data-feishu-detail-panel="scope">
+                <div class="scheme-personnel-display">
+                  <section class="scheme-personnel-display-section" aria-label="同步范围设置">
+                    <div class="scheme-personnel-display-title feishu-scope-display-title">
+                      <span>按条件选择</span>
+                      <button type="button" class="icon-action" title="编辑" aria-label="编辑同步范围设置" id="openFeishuDetailScopeEdit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
+                    </div>
+                    <table class="scheme-personnel-condition-table feishu-detail-scope-table">
+                      <thead>
+                        <tr>
+                          <th>条件</th>
+                          <th>名称</th>
+                        </tr>
+                      </thead>
+                      <tbody id="feishuDetailScopeRows"></tbody>
+                    </table>
+                  </section>
+                </div>
+              </div>
+
+              <div class="scheme-detail-panel" data-feishu-detail-panel="records">
+                <section class="query-panel feishu-record-query" aria-label="飞书打卡同步记录查询条件">
+                  <div class="query-grid shift">
+                    <label>
+                      <span class="field-label">开始时间</span>
+                      <input id="feishuDetailRecordStartTime" type="text" placeholder="开始日期 ~ 结束日期">
+                    </label>
+                  </div>
+                  <div class="query-actions">
+                    <button type="button" class="ghost" id="resetFeishuDetailRecord">⟳ 重置</button>
+                    <button type="button" class="primary" id="searchFeishuDetailRecord">⌕ 查询</button>
+                  </div>
+                </section>
+
+                <section class="table-panel" aria-label="飞书打卡同步记录列表">
+                  <div class="table-wrap">
+                    <table class="feishu-sync-log-table">
+                      <colgroup>
+                        <col style="width: 58px">
+                        <col style="width: 190px">
+                        <col style="width: 190px">
+                        <col style="width: 100px">
+                        <col style="width: 160px">
+                        <col style="width: 120px">
+                        <col style="width: 120px">
+                        <col style="width: 300px">
+                        <col style="width: 110px">
+                        <col style="width: 100px">
+                        <col style="width: 100px">
+                        <col style="width: 260px">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th class="center">序号</th>
+                          <th>开始时间</th>
+                          <th>结束时间</th>
+                          <th>耗时</th>
+                          <th>执行人</th>
+                          <th>执行类型</th>
+                          <th>执行状态</th>
+                          <th>同步数据范围</th>
+                          <th>同步总数</th>
+                          <th>成功数</th>
+                          <th>失败数</th>
+                          <th>备注</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="center">1</td>
+                          <td>2026/09/28 16:32:20</td>
+                          <td>--</td>
+                          <td>--</td>
+                          <td>陈南(zt06293)</td>
+                          <td>手动同步</td>
+                          <td><span class="status-tag off">执行中</span></td>
+                          <td>--</td>
+                          <td>--</td>
+                          <td>--</td>
+                          <td>--</td>
+                          <td>--</td>
+                        </tr>
+                        <tr>
+                          <td class="center">2</td>
+                          <td>2026/06/11 14:20:12</td>
+                          <td>2026/06/11 14:20:14</td>
+                          <td>2秒</td>
+                          <td>吴振兴(zt22840)</td>
+                          <td>手动同步</td>
+                          <td><span class="status-tag">执行结束</span></td>
+                          <td>--</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td>未查询到可同步数据</td>
+                        </tr>
+                        <tr>
+                          <td class="center">3</td>
+                          <td>2025/07/11 17:54:12</td>
+                          <td>2025/07/11 17:54:14</td>
+                          <td>2秒</td>
+                          <td>徐德贵(zt22650)</td>
+                          <td>手动同步</td>
+                          <td><span class="status-tag">执行结束</span></td>
+                          <td>2025/05/05 13:54:14~2025/05/05 13:54:14</td>
+                          <td>2</td>
+                          <td>2</td>
+                          <td>0</td>
+                          <td>--</td>
+                        </tr>
+                        <tr>
+                          <td class="center">4</td>
+                          <td>2025/07/11 17:22:01</td>
+                          <td>2025/07/11 17:22:02</td>
+                          <td>1秒</td>
+                          <td>系统</td>
+                          <td>定时同步</td>
+                          <td><span class="status-tag error">执行失败</span></td>
+                          <td>--</td>
+                          <td>0</td>
+                          <td>0</td>
+                          <td><button type="button" class="link" data-feishu-fail-detail>1</button></td>
+                          <td>飞书接口超时</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="pager">
+                    <span>共4条</span>
+                    <span class="pager-link">&lt;</span>
+                    <span class="page-no">1</span>
+                    <span class="pager-link">&gt;</span>
+                    <select aria-label="每页条数">
+                      <option>20 条/页</option>
+                      <option>50 条/页</option>
+                    </select>
+                  </div>
+                </section>
+              </div>
+            </section>
+          </div>
+        </div>
+
         <div class="page-view" data-page="feishuClockSyncRecords">
-          <section class="query-panel" aria-label="飞书打卡同步记录查询条件">
-            <div class="panel-title">查询条件</div>
+          <section class="query-panel feishu-record-query" aria-label="飞书打卡同步记录查询条件">
             <div class="query-grid shift">
               <label>
-                <span class="field-label">规则名称</span>
-                <select id="feishuRecordRuleName">
-                  <option>全部</option>
-                  <option>中国大陆飞书打卡同步规则</option>
-                  <option>总部职能飞书打卡同步规则</option>
-                </select>
-              </label>
-              <label>
-                <span class="field-label">执行状态</span>
-                <select id="feishuRecordStatus">
-                  <option>全部</option>
-                  <option>成功</option>
-                  <option>部分成功</option>
-                  <option>失败</option>
-                </select>
-              </label>
-              <label>
-                <span class="field-label">触发方式</span>
-                <select id="feishuRecordTrigger">
-                  <option>全部</option>
-                  <option>定时</option>
-                  <option>手动</option>
-                </select>
-              </label>
-              <label>
-                <span class="field-label">同步时间</span>
-                <input id="feishuRecordTime" type="text" placeholder="开始时间 ~ 结束时间">
+                <span class="field-label">开始时间</span>
+                <input id="feishuRecordStartTime" type="text" placeholder="开始日期 ~ 结束日期">
               </label>
             </div>
             <div class="query-actions">
-              <button type="button" class="ghost" id="backFeishuRule">返回规则配置</button>
               <button type="button" class="ghost" id="resetFeishuRecord">⟳ 重置</button>
               <button type="button" class="primary" id="searchFeishuRecord">⌕ 查询</button>
             </div>
           </section>
 
           <section class="table-panel" aria-label="飞书打卡同步记录列表">
-            <div class="feishu-sync-summary">
-              <span>命中人数<b>1260</b></span>
-              <span>同步成功<b>1188</b></span>
-              <span>飞书无数据<b>64</b></span>
-              <span>同步失败<b>8</b></span>
-            </div>
             <div class="table-wrap">
               <table class="feishu-sync-log-table">
                 <colgroup>
                   <col style="width: 58px">
                   <col style="width: 190px">
-                  <col style="width: 230px">
+                  <col style="width: 190px">
                   <col style="width: 100px">
-                  <col style="width: 270px">
-                  <col style="width: 90px">
-                  <col style="width: 90px">
-                  <col style="width: 90px">
-                  <col style="width: 90px">
+                  <col style="width: 160px">
+                  <col style="width: 120px">
+                  <col style="width: 120px">
+                  <col style="width: 300px">
                   <col style="width: 110px">
-                  <col style="width: 140px">
+                  <col style="width: 100px">
+                  <col style="width: 100px">
+                  <col style="width: 260px">
                 </colgroup>
                 <thead>
                   <tr>
                     <th class="center">序号</th>
-                    <th>执行时间</th>
-                    <th>规则名称</th>
-                    <th>触发方式</th>
-                    <th>同步数据范围</th>
-                    <th>命中人数</th>
-                    <th>成功</th>
-                    <th>无数据</th>
-                    <th>失败</th>
+                    <th>开始时间</th>
+                    <th>结束时间</th>
+                    <th>耗时</th>
+                    <th>执行人</th>
+                    <th>执行类型</th>
                     <th>执行状态</th>
-                    <th>操作</th>
+                    <th>同步数据范围</th>
+                    <th>同步总数</th>
+                    <th>成功数</th>
+                    <th>失败数</th>
+                    <th>备注</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td class="center">1</td>
-                    <td>2026/09/21 10:00:00</td>
-                    <td>中国大陆飞书打卡同步规则</td>
-                    <td>定时</td>
-                    <td>2026/09/19 10:00:00 ~ 2026/09/21 10:00:00</td>
-                    <td>1260</td>
-                    <td>1188</td>
-                    <td>64</td>
-                    <td>8</td>
-                    <td><span class="status-tag off">部分成功</span></td>
-                    <td><button type="button" class="link" data-feishu-sync-detail>查看明细</button></td>
+                    <td>2026/09/28 16:32:20</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>陈南(zt06293)</td>
+                    <td>手动同步</td>
+                    <td><span class="status-tag off">执行中</span></td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>--</td>
+                    <td>--</td>
                   </tr>
                   <tr>
                     <td class="center">2</td>
-                    <td>2026/09/21 09:00:00</td>
-                    <td>中国大陆飞书打卡同步规则</td>
-                    <td>手动</td>
-                    <td>2026/09/19 09:00:00 ~ 2026/09/21 09:00:00</td>
-                    <td>1260</td>
-                    <td>1260</td>
+                    <td>2026/06/11 14:20:12</td>
+                    <td>2026/06/11 14:20:14</td>
+                    <td>2秒</td>
+                    <td>吴振兴(zt22840)</td>
+                    <td>手动同步</td>
+                    <td><span class="status-tag">执行结束</span></td>
+                    <td>--</td>
                     <td>0</td>
                     <td>0</td>
-                    <td><span class="status-tag">成功</span></td>
-                    <td><button type="button" class="link" data-feishu-sync-detail>查看明细</button></td>
+                    <td>0</td>
+                    <td>未查询到可同步数据</td>
+                  </tr>
+                  <tr>
+                    <td class="center">3</td>
+                    <td>2025/07/11 17:54:12</td>
+                    <td>2025/07/11 17:54:14</td>
+                    <td>2秒</td>
+                    <td>徐德贵(zt22650)</td>
+                    <td>手动同步</td>
+                    <td><span class="status-tag">执行结束</span></td>
+                    <td>2025/05/05 13:54:14~2025/05/05 13:54:14</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>--</td>
+                  </tr>
+                  <tr>
+                    <td class="center">4</td>
+                    <td>2025/07/11 17:22:01</td>
+                    <td>2025/07/11 17:22:02</td>
+                    <td>1秒</td>
+                    <td>系统</td>
+                    <td>定时同步</td>
+                    <td><span class="status-tag error">执行失败</span></td>
+                    <td>--</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td><button type="button" class="link" data-feishu-fail-detail>1</button></td>
+                    <td>飞书接口超时</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="pager">
-              <span>共2条</span>
+              <span>共4条</span>
               <span class="pager-link">&lt;</span>
               <span class="page-no">1</span>
               <span class="pager-link">&gt;</span>
@@ -8110,7 +8424,7 @@
               <button type="button" class="primary" id="openSchemeCreate">+ 新增</button>
             </div>
             <div class="table-wrap">
-              <table style="min-width: 1260px">
+              <table class="attendance-scheme-table" style="min-width: 1260px">
                 <colgroup>
                   <col style="width: 58px">
                   <col style="width: 180px">
@@ -8201,19 +8515,27 @@
                 <div class="scheme-panel-tools">
                   <button type="button" class="icon-action" title="编辑" aria-label="编辑考勤人员设置" id="openSchemePersonnelEdit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg></button>
                 </div>
-                <div class="table-wrap">
-                  <table class="scheme-simple-table">
-                    <thead>
-                      <tr>
-                        <th class="center">序号</th>
-                        <th>选择方式</th>
-                        <th>条件</th>
-                        <th>名称</th>
-                        <th>排除人员</th>
-                      </tr>
-                    </thead>
-                    <tbody id="schemeDetailPersonnelRows"></tbody>
-                  </table>
+                <div class="scheme-personnel-display">
+                  <section class="scheme-personnel-display-section" aria-label="按条件选择">
+                    <div class="scheme-personnel-display-title">按条件选择</div>
+                    <table class="scheme-personnel-condition-table">
+                      <thead>
+                        <tr>
+                          <th>条件</th>
+                          <th>名称</th>
+                          <th>排除人员</th>
+                        </tr>
+                      </thead>
+                      <tbody id="schemeDetailPersonnelConditionRows"></tbody>
+                    </table>
+                  </section>
+                  <section class="scheme-personnel-display-section" aria-label="按人员选择">
+                    <div class="scheme-personnel-display-title">按人员选择</div>
+                    <div class="scheme-personnel-people-line">
+                      <span class="scheme-personnel-people-label">工号：</span>
+                      <span class="scheme-personnel-people-value" id="schemeDetailPersonnelPeople">--</span>
+                    </div>
+                  </section>
                 </div>
               </div>
 
@@ -8922,7 +9244,7 @@
       </div>
       <div class="feishu-rule-modal-body">
         <div class="feishu-rule-form">
-          <div class="feishu-rule-section">
+          <div class="feishu-rule-section" id="feishuRuleBasicSection">
             <div class="feishu-rule-section-title">基础信息</div>
             <div class="feishu-basic-grid">
               <label class="feishu-basic-field">
@@ -8945,10 +9267,14 @@
                   <option>停用</option>
                 </select>
               </label>
+              <label class="feishu-basic-field wide">
+                <span class="field-label">描述</span>
+                <textarea id="feishuRuleDesc" rows="3" placeholder="请输入"></textarea>
+              </label>
             </div>
           </div>
 
-          <div class="feishu-rule-section">
+          <div class="feishu-rule-section" id="feishuRuleScopeSection">
             <div class="feishu-scope-title">
               <span>同步范围设置</span>
               <small>按条件选择</small>
@@ -8964,7 +9290,7 @@
             </div>
           </div>
 
-          <p class="modal-tip-note">系统将根据配置范围获取适配人员。飞书打卡同步频率和同步数据范围请在列表页【同步规则设置】中统一维护。</p>
+          <p class="modal-tip-note" id="feishuRuleTip">系统将根据配置范围获取适配人员。飞书打卡同步频率和同步数据范围请在列表页【同步规则设置】中统一维护。</p>
         </div>
       </div>
       <div class="modal-actions">
@@ -9020,103 +9346,64 @@
     </div>
   </div>
 
-  <div class="modal-backdrop" id="feishuSyncDetailModal" role="dialog" aria-modal="true" aria-labelledby="feishuSyncDetailTitle">
+  <div class="modal-backdrop" id="feishuSyncFailModal" role="dialog" aria-modal="true" aria-labelledby="feishuSyncFailTitle">
     <div class="modal feishu-detail">
       <div class="modal-head">
-        <span id="feishuSyncDetailTitle">同步人员明细 - 中国大陆飞书打卡同步规则</span>
-        <button type="button" class="modal-close" data-close="feishuSyncDetailModal">×</button>
-      </div>
-      <div class="feishu-detail-head">
-        <span>任务时间：2026/09/21 10:00:00</span>
-        <span>同步范围：2026/09/19 10:00:00 ~ 2026/09/21 10:00:00</span>
-        <span>结果汇总：命中1260人，成功1188人，无数据64人，失败8人</span>
+        <span id="feishuSyncFailTitle">同步失败数:1</span>
+        <button type="button" class="modal-close" data-close="feishuSyncFailModal">×</button>
       </div>
       <div class="feishu-detail-filter">
         <label>
-          <span class="field-label">员工</span>
+          <span class="field-label">工号</span>
           <input type="text" placeholder="请通过工号/姓名搜索">
         </label>
-        <label>
-          <span class="field-label">状态</span>
-          <select>
-            <option>全部</option>
-            <option>成功</option>
-            <option>无数据</option>
-            <option>失败</option>
-          </select>
-        </label>
-        <button type="button" class="primary feishu-detail-export">⇩ 导出明细</button>
+        <div class="feishu-detail-filter-actions">
+          <button type="button" class="primary">查询</button>
+          <button type="button">重置</button>
+        </div>
       </div>
       <div class="table-wrap">
         <table class="feishu-sync-detail-table">
           <colgroup>
-            <col style="width: 46px">
             <col style="width: 58px">
             <col style="width: 100px">
-            <col style="width: 120px">
-            <col style="width: 190px">
-            <col style="width: 110px">
-            <col style="width: 110px">
-            <col style="width: 85px">
-            <col style="width: 78px">
-            <col style="width: 165px">
+            <col style="width: 170px">
+            <col style="width: 210px">
+            <col style="width: 180px">
           </colgroup>
           <thead>
             <tr>
-              <th class="center"><input id="feishuSyncDetailCheckAll" class="table-check" type="checkbox" aria-label="全选同步人员明细"></th>
               <th class="center">序号</th>
               <th>工号</th>
-              <th>姓名</th>
-              <th>部门</th>
-              <th>划分区域</th>
-              <th>命中来源</th>
-              <th>状态</th>
-              <th>记录数</th>
-              <th>原因</th>
+              <th>打卡数据(条)</th>
+              <th>打卡时间范围</th>
+              <th>失败原因</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="center"><input class="table-check feishu-sync-detail-check" type="checkbox" aria-label="选择第1行"></td>
               <td class="center">1</td>
-              <td>ZT00123</td>
-              <td>张三</td>
-              <td>华南销售部</td>
-              <td>中国大陆</td>
-              <td>规则命中</td>
-              <td><span class="status-tag">成功</span></td>
-              <td>4</td>
-              <td>--</td>
-            </tr>
-            <tr>
-              <td class="center"><input class="table-check feishu-sync-detail-check" type="checkbox" aria-label="选择第2行"></td>
-              <td class="center">2</td>
-              <td>ZT00456</td>
-              <td>李四</td>
-              <td>供应链中心</td>
-              <td>中国大陆</td>
-              <td>规则命中</td>
-              <td><span class="status-tag off">无数据</span></td>
-              <td>0</td>
-              <td>飞书无返回</td>
-            </tr>
-            <tr>
-              <td class="center"><input class="table-check feishu-sync-detail-check" type="checkbox" aria-label="选择第3行"></td>
-              <td class="center">3</td>
-              <td>ZT00789</td>
-              <td>王五</td>
-              <td>研发中心</td>
-              <td>中国大陆</td>
-              <td>规则命中</td>
-              <td><span class="status-tag error">失败</span></td>
-              <td>0</td>
-              <td>飞书接口超时</td>
+              <td>1</td>
+              <td>1</td>
+              <td>2026/08/13 16:05:29~2026/08/13 16:05:29</td>
+              <td>员工不存在</td>
             </tr>
           </tbody>
         </table>
       </div>
+      <div class="pager">
+        <span>共1条</span>
+        <span class="pager-link">&lt;</span>
+        <span class="page-no">1</span>
+        <span class="pager-link">&gt;</span>
+        <select aria-label="每页条数">
+          <option>20 条/页</option>
+          <option>50 条/页</option>
+        </select>
+      </div>
       <div class="modal-actions">
-        <button type="button" class="primary" data-close="feishuSyncDetailModal">知道了</button>
+        <button type="button" data-close="feishuSyncFailModal">取消</button>
+        <button type="button" class="primary" data-close="feishuSyncFailModal">确定</button>
       </div>
     </div>
   </div>
@@ -11728,6 +12015,7 @@
       const icons = {
         copy: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>',
         edit: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>',
+        more: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"></circle><circle cx="12" cy="12" r="1.6"></circle><circle cx="19" cy="12" r="1.6"></circle></svg>',
         power: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"></path><path d="M18.4 6.6a9 9 0 1 1-12.8 0"></path></svg>',
         delete: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>',
         log: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"></path><path d="M14 2v6h6"></path><path d="M8 13h8"></path><path d="M8 17h5"></path></svg>',
@@ -12214,27 +12502,37 @@
         copyBtn.addEventListener("click", () => copyAttendanceScheme(actualIndex));
         actions.appendChild(copyBtn);
 
-        const statusBtn = document.createElement("button");
-        statusBtn.type = "button";
-        statusBtn.className = "icon-action";
-        statusBtn.title = row.status === "禁用" ? "启用" : "停用";
-        statusBtn.setAttribute("aria-label", statusBtn.title);
-        statusBtn.innerHTML = schemeActionIcon("power");
-        statusBtn.addEventListener("click", () => toggleAttendanceSchemeStatus(actualIndex));
-        actions.appendChild(statusBtn);
+        const more = document.createElement("span");
+        more.className = "more-actions";
+        const moreBtn = document.createElement("button");
+        moreBtn.type = "button";
+        moreBtn.className = "icon-action";
+        moreBtn.title = "更多";
+        moreBtn.setAttribute("aria-label", "更多");
+        moreBtn.innerHTML = schemeActionIcon("more");
+        moreBtn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          document.querySelectorAll(".attendance-scheme-table .more-actions.open").forEach((item) => {
+            if (item !== more) item.classList.remove("open");
+          });
+          more.classList.toggle("open");
+        });
 
-        const deleteBtn = document.createElement("button");
-        deleteBtn.type = "button";
-        deleteBtn.className = "icon-action danger";
-        deleteBtn.title = "删除";
-        deleteBtn.setAttribute("aria-label", "删除");
-        deleteBtn.innerHTML = schemeActionIcon("delete");
-        deleteBtn.addEventListener("click", () => {
+        const moreMenu = document.createElement("span");
+        moreMenu.className = "more-menu";
+        moreMenu.appendChild(holidayMoreMenuButton(row.status === "启用" ? "停用" : "启用", "power", () => {
+          more.classList.remove("open");
+          toggleAttendanceSchemeStatus(actualIndex);
+        }));
+        moreMenu.appendChild(holidayMoreMenuButton("删除", "delete", () => {
+          more.classList.remove("open");
           attendanceSchemeRowsData.splice(actualIndex, 1);
           renderAttendanceSchemeRows();
           showToast("已删除考勤方案");
-        });
-        actions.appendChild(deleteBtn);
+        }, true));
+        more.appendChild(moreBtn);
+        more.appendChild(moreMenu);
+        actions.appendChild(more);
 
         actionTd.appendChild(actions);
         tr.appendChild(actionTd);
@@ -12867,30 +13165,19 @@
       document.getElementById("schemeDetailStatus").textContent = row.status || "--";
       document.getElementById("schemeDetailDesc").textContent = row.desc || "--";
 
-      const tbody = document.getElementById("schemeDetailPersonnelRows");
-      tbody.innerHTML = "";
+      const conditionTbody = document.getElementById("schemeDetailPersonnelConditionRows");
+      conditionTbody.innerHTML = "";
       const conditions = row.conditions && row.conditions.length
         ? row.conditions
         : [{ type: "划分区域", name: row.area, exclude: "" }];
-      conditions.forEach((condition, index) => {
+      conditions.forEach((condition) => {
         const tr = document.createElement("tr");
-        tr.appendChild(shiftCell(index + 1, "center"));
-        tr.appendChild(shiftCell("按条件选择"));
         tr.appendChild(shiftCell(condition.type));
         tr.appendChild(shiftCell(condition.name || row.area));
         tr.appendChild(shiftCell(condition.exclude || "--"));
-        tbody.appendChild(tr);
+        conditionTbody.appendChild(tr);
       });
-
-      if (row.people) {
-        const tr = document.createElement("tr");
-        tr.appendChild(shiftCell(tbody.children.length + 1, "center"));
-        tr.appendChild(shiftCell("按人员选择"));
-        tr.appendChild(shiftCell("--"));
-        tr.appendChild(shiftCell(row.people));
-        tr.appendChild(shiftCell("--"));
-        tbody.appendChild(tr);
-      }
+      document.getElementById("schemeDetailPersonnelPeople").textContent = row.people || "--";
       renderSchemeAttendanceListRows();
       renderSchemeMonthListRows();
     }
@@ -12983,7 +13270,7 @@
     function toggleAttendanceSchemeStatus(index) {
       const row = attendanceSchemeRowsData[index];
       if (!row) return;
-      row.status = row.status === "禁用" ? "启用" : "禁用";
+      row.status = row.status === "启用" ? "禁用" : "启用";
       row.updatedBy = "陈南（zt06293）";
       row.updatedAt = "2026/09/08 15:40:00";
       renderAttendanceSchemeRows();
@@ -14266,6 +14553,7 @@
     });
     document.addEventListener("click", () => {
       document.querySelectorAll(".attendance-record-table .more-actions.open").forEach((item) => item.classList.remove("open"));
+      document.querySelectorAll(".attendance-scheme-table .more-actions.open").forEach((item) => item.classList.remove("open"));
     });
 
     document.getElementById("resetArrangementShift").addEventListener("click", () => {
@@ -14458,12 +14746,26 @@
       showToast("飞书打卡记录同步规则查询条件已重置");
     });
     document.getElementById("searchFeishuRule").addEventListener("click", () => showToast("飞书打卡记录同步规则查询完成"));
-    document.getElementById("openFeishuRuleModal").addEventListener("click", () => openModal("feishuRuleModal"));
+    document.getElementById("openFeishuRuleModal").addEventListener("click", () => openFeishuRuleCreate());
     document.querySelectorAll('[data-feishu-rule-action="edit"]').forEach((button) => {
-      button.addEventListener("click", () => openModal("feishuRuleModal"));
+      button.addEventListener("click", () => openFeishuRuleDetail(Number(button.dataset.ruleIndex || 0), "scope"));
     });
     document.getElementById("openFeishuRuleSetting").addEventListener("click", () => openModal("feishuRuleSettingModal"));
     document.getElementById("confirmFeishuRule").addEventListener("click", () => {
+      const name = document.getElementById("feishuRuleName").value.trim();
+      if (!name) {
+        showToast("请输入规则名称");
+        return;
+      }
+      if (feishuRuleModalMode === "edit") {
+        const row = feishuRuleRowsData[feishuCurrentRuleIndex];
+        row.name = name;
+        row.area = document.getElementById("feishuRuleBaseArea").value;
+        row.status = document.getElementById("feishuRuleStatus").value;
+        row.desc = document.getElementById("feishuRuleDesc").value.trim();
+        row.scopes = feishuScopeRows.map((scope) => ({ ...scope }));
+        renderFeishuRuleDetail();
+      }
       closeModal("feishuRuleModal");
       showToast("飞书打卡记录同步规则已保存");
     });
@@ -14475,27 +14777,111 @@
       button.addEventListener("click", () => showToast("飞书打卡手动同步任务已提交"));
     });
     document.querySelectorAll('[data-feishu-rule-action="log"]').forEach((button) => {
-      button.addEventListener("click", () => switchPage("feishuClockSyncRecords"));
+      button.addEventListener("click", () => openFeishuRuleDetail(Number(button.dataset.ruleIndex || 0), "records"));
     });
-    document.getElementById("backFeishuRule").addEventListener("click", () => switchPage("feishuClockSyncRule"));
     document.getElementById("resetFeishuRecord").addEventListener("click", () => {
-      document.getElementById("feishuRecordRuleName").selectedIndex = 0;
-      document.getElementById("feishuRecordStatus").selectedIndex = 0;
-      document.getElementById("feishuRecordTrigger").selectedIndex = 0;
-      document.getElementById("feishuRecordTime").value = "";
+      document.getElementById("feishuRecordStartTime").value = "";
       showToast("飞书打卡同步记录查询条件已重置");
     });
     document.getElementById("searchFeishuRecord").addEventListener("click", () => showToast("飞书打卡同步记录查询完成"));
-    document.querySelectorAll("[data-feishu-sync-detail]").forEach((button) => {
-      button.addEventListener("click", () => openModal("feishuSyncDetailModal"));
+    document.querySelectorAll("[data-feishu-fail-detail]").forEach((button) => {
+      button.addEventListener("click", () => openModal("feishuSyncFailModal"));
     });
     const feishuScopeOptions = {
       "划分区域": ["中国大陆", "美洲区", "欧洲区", "北美区"],
       "组织": ["HRAS人力综合系统", "总部职能中心", "FBU仓储事业部", "LBU速运事业部"]
     };
+    const feishuRuleRowsData = [
+      {
+        name: "中国大陆飞书打卡同步规则",
+        area: "中国大陆",
+        status: "启用",
+        desc: "中国大陆区域飞书打卡记录同步规则。",
+        scopes: [{ condition: "划分区域", name: "中国大陆" }]
+      },
+      {
+        name: "总部职能飞书打卡同步规则",
+        area: "中国大陆",
+        status: "停用",
+        desc: "总部职能人员飞书打卡记录同步规则。",
+        scopes: [{ condition: "划分区域", name: "中国大陆" }, { condition: "组织", name: "总部职能中心" }]
+      }
+    ];
+    let feishuCurrentRuleIndex = 0;
+    let feishuRuleModalMode = "create";
     let feishuScopeRows = [
       { condition: "划分区域", name: "中国大陆" }
     ];
+
+    function setFeishuDetailTab(tabName) {
+      document.querySelectorAll("[data-feishu-detail-tab]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.feishuDetailTab === tabName);
+      });
+      document.querySelectorAll("[data-feishu-detail-panel]").forEach((panel) => {
+        panel.classList.toggle("active", panel.dataset.feishuDetailPanel === tabName);
+      });
+    }
+
+    function renderFeishuRuleDetail() {
+      const row = feishuRuleRowsData[feishuCurrentRuleIndex] || feishuRuleRowsData[0];
+      document.getElementById("feishuDetailName").textContent = row.name || "--";
+      document.getElementById("feishuDetailArea").textContent = row.area || "--";
+      document.getElementById("feishuDetailStatus").textContent = row.status || "--";
+      document.getElementById("feishuDetailDesc").textContent = row.desc || "--";
+      const tbody = document.getElementById("feishuDetailScopeRows");
+      tbody.innerHTML = "";
+      row.scopes.forEach((scope) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td>${scope.condition}</td><td>${scope.name}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function setFeishuRuleModalSections(sectionMode) {
+      document.getElementById("feishuRuleBasicSection").hidden = sectionMode === "scope";
+      document.getElementById("feishuRuleScopeSection").hidden = sectionMode === "basic";
+      document.getElementById("feishuRuleTip").hidden = sectionMode !== "create";
+    }
+
+    function fillFeishuRuleModal(row) {
+      document.getElementById("feishuRuleName").value = row.name || "";
+      document.getElementById("feishuRuleBaseArea").value = row.area || "中国大陆";
+      document.getElementById("feishuRuleStatus").value = row.status || "启用";
+      document.getElementById("feishuRuleDesc").value = row.desc || "";
+      feishuScopeRows = row.scopes && row.scopes.length
+        ? row.scopes.map((scope) => ({ ...scope }))
+        : [{ condition: "划分区域", name: row.area || "中国大陆" }];
+      renderFeishuScopeRows();
+    }
+
+    function openFeishuRuleCreate() {
+      feishuRuleModalMode = "create";
+      document.getElementById("feishuRuleModalTitle").textContent = "新增飞书打卡规则";
+      setFeishuRuleModalSections("create");
+      fillFeishuRuleModal({
+        name: "",
+        area: "中国大陆",
+        status: "启用",
+        desc: "",
+        scopes: [{ condition: "划分区域", name: "中国大陆" }]
+      });
+      openModal("feishuRuleModal");
+    }
+
+    function openFeishuRuleEdit(sectionMode) {
+      feishuRuleModalMode = "edit";
+      document.getElementById("feishuRuleModalTitle").textContent = sectionMode === "scope" ? "编辑同步范围设置" : "编辑基础信息";
+      setFeishuRuleModalSections(sectionMode || "basic");
+      fillFeishuRuleModal(feishuRuleRowsData[feishuCurrentRuleIndex] || feishuRuleRowsData[0]);
+      openModal("feishuRuleModal");
+    }
+
+    function openFeishuRuleDetail(index, tabName) {
+      feishuCurrentRuleIndex = Number.isFinite(index) ? index : 0;
+      renderFeishuRuleDetail();
+      setFeishuDetailTab(tabName || "scope");
+      switchPage("feishuClockSyncRuleDetail");
+    }
 
     function renderFeishuScopeRows() {
       const wrap = document.getElementById("feishuScopeRows");
@@ -14558,18 +14944,17 @@
       renderFeishuScopeRows();
     });
     renderFeishuScopeRows();
-
-    document.getElementById("feishuSyncDetailCheckAll").addEventListener("change", (event) => {
-      document.querySelectorAll(".feishu-sync-detail-check").forEach((checkbox) => {
-        checkbox.checked = event.target.checked;
-      });
+    renderFeishuRuleDetail();
+    document.getElementById("openFeishuDetailBasicEdit").addEventListener("click", () => openFeishuRuleEdit("basic"));
+    document.getElementById("openFeishuDetailScopeEdit").addEventListener("click", () => openFeishuRuleEdit("scope"));
+    document.querySelectorAll("[data-feishu-detail-tab]").forEach((button) => {
+      button.addEventListener("click", () => setFeishuDetailTab(button.dataset.feishuDetailTab));
     });
-    document.querySelectorAll(".feishu-sync-detail-check").forEach((checkbox) => {
-      checkbox.addEventListener("change", () => {
-        const rowChecks = [...document.querySelectorAll(".feishu-sync-detail-check")];
-        document.getElementById("feishuSyncDetailCheckAll").checked = rowChecks.every((item) => item.checked);
-      });
+    document.getElementById("resetFeishuDetailRecord").addEventListener("click", () => {
+      document.getElementById("feishuDetailRecordStartTime").value = "";
+      showToast("飞书打卡同步记录查询条件已重置");
     });
+    document.getElementById("searchFeishuDetailRecord").addEventListener("click", () => showToast("飞书打卡同步记录查询完成"));
 
     document.querySelectorAll('input[name="clockSyncTarget"]').forEach((radio) => {
       radio.addEventListener("change", () => {
@@ -14737,13 +15122,14 @@
         ? "clock"
         : pageName === "attendanceSchemeDetail" ? "attendanceScheme"
           : pageName === "holidayEditor" ? "holiday"
-            : pageName === "feishuClockSyncRecords" ? "feishuClockSyncRule"
+            : pageName === "feishuClockSyncRecords" || pageName === "feishuClockSyncRuleDetail" ? "feishuClockSyncRule"
               : pageName === "arrangementShiftLog" ? "arrangementShift" : pageName;
+      const navMappedPages = ["attendanceSchemeDetail", "holidayEditor", "feishuClockSyncRecords", "feishuClockSyncRuleDetail", "arrangementShiftLog"];
       document.querySelectorAll(".page-view").forEach((view) => {
         view.classList.toggle("active", view.dataset.page === pageName);
       });
       document.querySelectorAll(".page-title .nav-tab").forEach((item) => {
-        item.classList.toggle("active", item.dataset.pageTab === pageName || item.dataset.pageTab === sidebarPageName && pageName === "holidayEditor");
+        item.classList.toggle("active", item.dataset.pageTab === pageName || navMappedPages.includes(pageName) && item.dataset.pageTab === sidebarPageName);
       });
       document.querySelectorAll(".sidebar [data-page-tab]").forEach((item) => {
         item.classList.toggle("active", item.dataset.pageTab === sidebarPageName);
