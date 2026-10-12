@@ -1211,6 +1211,14 @@
       display: inline-flex;
     }
 
+    .shift-detail-tab {
+      display: none;
+    }
+
+    body.shift-detail-open .shift-detail-tab {
+      display: inline-flex;
+    }
+
     .form-grid.shift-form {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px 64px;
@@ -2799,6 +2807,167 @@
 
     .shift-create-body .mini-table td {
       background: #fff;
+    }
+
+    .shift-name-link {
+      min-height: auto;
+      max-width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--primary);
+      font-weight: 500;
+      text-align: left;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      vertical-align: middle;
+    }
+
+    .shift-name-link:hover,
+    .shift-name-link:focus-visible {
+      color: #0f55d8;
+      text-decoration: underline;
+    }
+
+    .modal.shift-detail {
+      width: min(1180px, calc(100vw - 40px));
+      max-height: calc(100vh - 40px);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal.shift-detail .modal-body {
+      overflow-y: auto;
+      padding: 16px 18px 18px;
+      background: #f5f7fb;
+    }
+
+    .shift-detail-page-body {
+      margin: 0 -10px;
+      padding: 12px 10px 68px;
+      border-top: 1px solid var(--line);
+      background: #f3f6fa;
+    }
+
+    .shift-detail-body .form-panel {
+      margin: 0 0 12px;
+      padding: 14px 16px 18px;
+      border: 0;
+      border-radius: 6px;
+      box-shadow: none;
+      background: #fff;
+    }
+
+    .shift-detail-body .form-panel-head {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      margin: 0 0 10px;
+      padding: 0 10px;
+      border: 1px solid #ead7ab;
+      border-radius: 3px;
+      color: #5f4b21;
+      font-weight: 500;
+      background: #fff8e6;
+    }
+
+    .shift-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .shift-detail-item {
+      display: grid;
+      grid-template-columns: 168px minmax(0, 1fr);
+      min-height: 42px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .shift-detail-item.wide {
+      grid-column: 1 / -1;
+      grid-template-columns: 168px minmax(0, 1fr);
+    }
+
+    .shift-detail-label,
+    .shift-detail-value {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      padding: 10px 12px;
+      line-height: 1.45;
+    }
+
+    .shift-detail-label {
+      color: #4d5d73;
+      background: #fafbfe;
+      border-right: 1px solid var(--line);
+    }
+
+    .shift-detail-value {
+      color: #2f3a4b;
+      word-break: break-word;
+    }
+
+    .shift-day-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 22px;
+      min-width: 45px;
+      margin-right: 8px;
+      padding: 0 8px;
+      border: 1px solid #9ee27b;
+      border-radius: 2px;
+      color: #36a820;
+      background: #f3ffe8;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .shift-detail-table-wrap {
+      overflow-x: auto;
+    }
+
+    .shift-detail-table {
+      width: 100%;
+      min-width: 920px;
+      table-layout: fixed;
+      border: 1px solid var(--line);
+      border-collapse: collapse;
+    }
+
+    .shift-detail-table.duration {
+      min-width: 720px;
+    }
+
+    .shift-detail-table th,
+    .shift-detail-table td {
+      height: 36px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      color: #4c5665;
+      text-align: left;
+      background: #fff;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .shift-detail-table th {
+      color: #3e4958;
+      font-weight: 500;
+      background: #fafafa;
+    }
+
+    .shift-detail-subtitle {
+      margin: 12px 0 8px;
+      color: #2f3a4b;
+      font-weight: 600;
     }
 
     .scope-rule-wrap {
@@ -4960,6 +5129,7 @@
           <span class="nav-tab" data-page-tab="shift">班次配置</span>
           <span class="nav-tab" data-page-tab="whitelist">白名单配置</span>
           <span class="shift-create-tab">新增班次设置</span>
+          <span class="shift-detail-tab">班次详情</span>
           <span class="cycle-create-tab">新增考勤周期配置</span>
           <span class="scheme-detail-tab">考勤方案详情</span>
           <span class="holiday-editor-tab">编辑节假日方案</span>
@@ -8150,6 +8320,15 @@
           </div>
         </div>
 
+        <div class="page-view" data-page="shiftDetail">
+          <div class="shift-detail-page-body">
+            <div class="shift-detail-body" id="shiftDetailPageBody"></div>
+            <div class="bottom-actions">
+              <button type="button" id="backShiftFromDetail">返回</button>
+            </div>
+          </div>
+        </div>
+
         <div class="page-view" data-page="cycle">
           <section class="query-panel" aria-label="考勤周期查询条件" id="cycleQuery">
             <div class="panel-title">查询条件</div>
@@ -11041,58 +11220,70 @@
 
     const shiftRows = [
       {
-        name: "WX固定日班09:00",
+        name: "固定班次-按时间段休息",
         type: "固定班次",
         attr: "工作日",
         start: "09:00",
-        startEarliest: "05:00",
-        startLatest: "18:00",
+        startEarliest: "06:00",
+        startLatest: "10:00",
         end: "18:00",
         endEarliest: "09:00",
-        endLatest: "次日 04:59",
-        hours: "9",
+        endLatest: "后一天 23:59",
+        hours: "8",
         outControl: "否",
         rest: "是",
+        restCheck: "否",
         restControl: "否",
-        restType: "休息按时长休",
-        restMinutes: "--",
+        restType: "按时间段休息",
+        restMinutes: "30",
+        restStart1: "12:00",
+        restEnd1: "12:30",
+        restMinutes1: "30",
+        restEarliest1: "--",
+        restLatest1: "--",
+        restMatch1: "--",
         rounding: "否",
         exemption: "--",
         startRound: "--",
         endRound: "--",
         org: "WX",
-        area: "英国区, 爱尔兰区, 丹麦区, 比利时区, 中国区, 北美区, 法国区, 荷兰区, 日本区, 德国区",
-        late: "--",
+        area: "中国区, 北美区, 法国区, 荷兰区, 德国区",
+        late: "0",
         exempt: "999",
         absent: "--",
-        leaveEarly: "--",
+        leaveEarly: "0",
         endAbsent: "--",
-        overtime: "--",
+        overtime: "0",
         status: "启用",
         createdAt: "2026/08/20 17:23:38"
       },
       {
-        name: "欧洲自由班",
-        type: "自由班次",
+        name: "固定班次-按时长休息",
+        type: "固定班次",
         attr: "工作日",
-        start: "--",
-        startEarliest: "08:00",
-        startLatest: "--",
-        end: "--",
-        endEarliest: "--",
-        endLatest: "07:00",
+        start: "09:00",
+        startEarliest: "06:00",
+        startLatest: "10:00",
+        end: "18:00",
+        endEarliest: "09:00",
+        endLatest: "后一天 23:59",
         hours: "8",
-        outControl: "是",
-        rest: "否",
+        outControl: "否",
+        rest: "是",
+        restCheck: "否",
         restControl: "否",
-        restType: "--",
-        restMinutes: "--",
+        restType: "休息按时长休",
+        restMinutes: "60",
+        durationRestCondition1: "工作时长 >= 2 且 <= 9",
+        durationRestMinutes1: "60",
+        durationRestCondition2: "--",
+        durationRestMinutes2: "--",
         rounding: "否",
-        exemption: "0",
+        exemption: "--",
         startRound: "--",
         endRound: "--",
-        org: "ZT",
-        area: "英国区, 爱尔兰区, 丹麦区, 比利时区, 荷兰区, 意大利区, 澳洲区, 日本区, 德国区",
+        org: "WX",
+        area: "中国区, 北美区, 法国区, 荷兰区, 德国区",
         late: "0",
         exempt: "999",
         absent: "--",
@@ -11103,21 +11294,30 @@
         createdAt: "2026/07/31 08:44:45"
       },
       {
-        name: "中国弹性班10:00",
+        name: "弹性班次",
         type: "弹性班次",
+        elasticType: "晚到晚走",
+        elasticDuration: "60",
         attr: "工作日",
         start: "10:00",
         startEarliest: "07:00",
         startLatest: "16:00",
         end: "17:00",
         endEarliest: "18:00",
-        endLatest: "19:00",
+        endLatest: "后一天 19:00",
         hours: "7",
         outControl: "否",
-        rest: "否",
+        rest: "是",
+        restCheck: "否",
         restControl: "否",
-        restType: "--",
-        restMinutes: "--",
+        restType: "按时间段休息",
+        restMinutes: "30",
+        restStart1: "12:00",
+        restEnd1: "12:30",
+        restMinutes1: "30",
+        restEarliest1: "--",
+        restLatest1: "--",
+        restMatch1: "--",
         rounding: "否",
         exemption: "0",
         startRound: "--",
@@ -11134,26 +11334,35 @@
         createdAt: "2026/07/30 09:10:22"
       },
       {
-        name: "德国固定班09:00",
-        type: "固定班次",
+        name: "自由班次",
+        type: "自由班次",
         attr: "工作日",
-        start: "09:00",
-        startEarliest: "07:00",
-        startLatest: "15:00",
-        end: "18:00",
-        endEarliest: "12:00",
-        endLatest: "次日 06:00",
+        start: "--",
+        startEarliest: "08:00",
+        startLatest: "--",
+        end: "--",
+        endEarliest: "--",
+        endLatest: "后一天 07:00",
+        freeRangeStart: "08:00",
+        freeRangeStartDay: "当天",
+        freeRangeEnd: "07:00",
+        freeRangeEndDay: "后一天",
         hours: "8",
-        outControl: "否",
+        outControl: "是",
         rest: "是",
+        restCheck: "否",
         restControl: "否",
-        restType: "按时间段休息",
+        restType: "休息按时长休",
         restMinutes: "60",
+        durationRestCondition1: "工作时长 >= 2 且 <= 9",
+        durationRestMinutes1: "60",
+        durationRestCondition2: "--",
+        durationRestMinutes2: "--",
         rounding: "否",
         exemption: "0",
         startRound: "--",
         endRound: "--",
-        org: "WX",
+        org: "ZT",
         area: "中国区, 北美区, 法国区, 荷兰区, 德国区",
         late: "0",
         exempt: "999",
@@ -13345,14 +13554,218 @@
       if (row.restType === "休息按时长休") {
         return [
           ...emptyTimeRest,
-          row.durationRestCondition1 || "工作时长小于5",
+          row.durationRestCondition1 || "工作时长 >= 2 且 <= 9",
           row.durationRestMinutes1 || "60",
-          row.durationRestCondition2 || "5大于工作时长小于等于6",
-          row.durationRestMinutes2 || "90"
+          row.durationRestCondition2 || "--",
+          row.durationRestMinutes2 || "--"
         ];
       }
 
       return [...emptyTimeRest, ...emptyDurationRest];
+    }
+
+    function escapeHtml(value) {
+      return String(value === "" || value === undefined || value === null ? "--" : value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function cleanShiftTime(value) {
+      return String(value || "--").replace(/^(当天|后一天|次日)\s*/, "") || "--";
+    }
+
+    function shiftListTime(value) {
+      return cleanShiftTime(value);
+    }
+
+    function shiftDayTime(day, value) {
+      const time = cleanShiftTime(value);
+      if (!time || time === "--") return "--";
+      return `<span class="shift-day-tag">${escapeHtml(day)}</span>${escapeHtml(time)}`;
+    }
+
+    function shiftValue(value) {
+      return escapeHtml(value === "" || value === undefined || value === null ? "--" : value);
+    }
+
+    function shiftDetailGrid(items) {
+      return `
+        <div class="shift-detail-grid">
+          ${items.map((item) => `
+            <div class="shift-detail-item${item.wide ? " wide" : ""}">
+              <div class="shift-detail-label">${escapeHtml(item.label)}</div>
+              <div class="shift-detail-value">${item.html || shiftValue(item.value)}</div>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function shiftDetailPanel(title, content) {
+      return `
+        <section class="form-panel">
+          <div class="form-panel-head">${escapeHtml(title)}</div>
+          ${content}
+        </section>
+      `;
+    }
+
+    function shiftDetailInfoItems(row) {
+      const common = [
+        { label: "班次名称", value: row.name },
+        { label: "班次类型", value: row.type }
+      ];
+
+      if (row.type === "弹性班次") {
+        common.push(
+          { label: "弹性类型", value: row.elasticType || "晚到晚走" },
+          { label: "弹性时长(分钟)", value: row.elasticDuration || "60" }
+        );
+      }
+
+      common.push({ label: "班次属性", value: row.attr });
+
+      if (row.type === "自由班次") {
+        common.push(
+          { label: "上班最早打卡时间", html: shiftDayTime("当天", row.startEarliest) },
+          { label: "下班最晚打卡时间", html: shiftDayTime("后一天", row.endLatest) },
+          {
+            label: "纳入范围",
+            html: `${shiftDayTime(row.freeRangeStartDay || "当天", row.freeRangeStart || row.startEarliest)} <span style="margin:0 8px;color:#8a94a5;">~</span> ${shiftDayTime(row.freeRangeEndDay || "后一天", row.freeRangeEnd || row.endLatest)}`
+          },
+          { label: "班次时长(小时)", value: row.hours },
+          { label: "班次外打卡管控", value: row.outControl }
+        );
+        return common;
+      }
+
+      common.push(
+        { label: "上班时间", value: row.start },
+        { label: "上班最早打卡时间", html: shiftDayTime("当天", row.startEarliest) },
+        { label: "上班最晚打卡时间", html: shiftDayTime("当天", row.startLatest) },
+        { label: "下班时间", html: shiftDayTime("当天", row.end) },
+        { label: "下班最早打卡时间", html: shiftDayTime("当天", row.endEarliest) },
+        { label: "下班最晚打卡时间", html: shiftDayTime("后一天", row.endLatest) },
+        { label: "班次时长(小时)", value: row.hours },
+        { label: "班次外打卡管控", value: row.outControl }
+      );
+      return common;
+    }
+
+    function shiftRestDetailHtml(row) {
+      const summary = shiftDetailGrid([
+        { label: "是否休息", value: row.rest },
+        { label: "休息是否打卡", value: row.restCheck || "否" },
+        { label: "休息打卡管控", value: row.restControl },
+        { label: "休息类型", value: row.restType }
+      ]);
+
+      if (row.rest !== "是") {
+        return summary;
+      }
+
+      if (row.restType === "休息按时长休") {
+        return `
+          ${summary}
+          <div class="shift-detail-subtitle">休息按时长休</div>
+          <div class="shift-detail-table-wrap">
+            <table class="shift-detail-table duration">
+              <thead>
+                <tr>
+                  <th>休息条件1</th>
+                  <th>休息时长(分钟)1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${shiftValue(row.durationRestCondition1 || "工作时长 >= 2 且 <= 9")}</td>
+                  <td>${shiftValue(row.durationRestMinutes1 || "60")}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `;
+      }
+
+      return `
+        ${summary}
+        <div class="shift-detail-subtitle">${shiftValue(row.restType || "按时间段休息")}</div>
+        <div class="shift-detail-table-wrap">
+          <table class="shift-detail-table">
+            <thead>
+              <tr>
+                <th>休息开始时间1</th>
+                <th>休息结束时间1</th>
+                <th>休息时长(分钟)1</th>
+                <th>休息开始最早打卡时间1</th>
+                <th>休息开始最晚打卡时间1</th>
+                <th>优先匹配位置1 <span class="help-tip" tabindex="0" role="img" aria-label="优先匹配位置说明" data-tooltip="优先使用休息开始时间前或后的打卡记录进行匹配。">?</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${shiftValue(row.restStart1 || "12:00")}</td>
+                <td>${shiftValue(row.restEnd1 || "12:30")}</td>
+                <td>${shiftValue(row.restMinutes1 || row.restMinutes || "30")}</td>
+                <td>${shiftValue(row.restEarliest1 || "--")}</td>
+                <td>${shiftValue(row.restLatest1 || "--")}</td>
+                <td>${shiftValue(row.restMatch1 || "--")}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function shiftScopeDetailHtml(row) {
+      const rules = normalizedScopeRules(row);
+      const rows = rules.length ? rules : [{ condition: "适用条件", ranges: ["--"] }];
+      return `
+        <div class="shift-detail-table-wrap">
+          <table class="shift-detail-table duration">
+            <thead>
+              <tr>
+                <th>适用条件</th>
+                <th>条件范围</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map((rule) => `
+                <tr>
+                  <td>${shiftValue(rule.condition)}</td>
+                  <td>${shiftValue(rule.ranges.join("、"))}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function openShiftDetail(row) {
+      document.getElementById("shiftDetailPageBody").innerHTML = [
+        shiftDetailPanel("班次信息", shiftDetailGrid(shiftDetailInfoItems(row))),
+        shiftDetailPanel("休息设置", shiftRestDetailHtml(row)),
+        shiftDetailPanel("取整设置", shiftDetailGrid([
+          { label: "是否取整", value: row.rounding },
+          { label: "上班豁免时长(分钟)", value: row.exemption },
+          { label: "上班向下取整", value: row.startRound },
+          { label: "下班向上取整", value: row.endRound }
+        ])),
+        shiftDetailPanel("适用范围", shiftScopeDetailHtml(row)),
+        shiftDetailPanel("更多设置", shiftDetailGrid([
+          { label: "上班后多久(分钟)记为迟到", value: row.late },
+          { label: "豁免次数", value: row.exempt },
+          { label: "迟到多久(分钟)记为旷工", value: row.absent },
+          { label: "下班前多久(分钟)记为早退", value: row.leaveEarly },
+          { label: "早退多久(分钟)记为旷工", value: row.endAbsent },
+          { label: "下班后多久开始算加班(分钟)", value: row.overtime }
+        ]))
+      ].join("");
+      switchPage("shiftDetail");
     }
 
     function renderClockRows() {
@@ -13588,7 +14001,16 @@
       shiftRows.forEach((row, index) => {
         const tr = document.createElement("tr");
         tr.appendChild(shiftCell(index + 1, "center"));
-        tr.appendChild(shiftCell(row.name, "", row.name));
+
+        const nameTd = document.createElement("td");
+        nameTd.title = row.name;
+        const nameBtn = document.createElement("button");
+        nameBtn.type = "button";
+        nameBtn.className = "shift-name-link";
+        nameBtn.textContent = row.name;
+        nameBtn.addEventListener("click", () => openShiftDetail(row));
+        nameTd.appendChild(nameBtn);
+        tr.appendChild(nameTd);
 
         const typeTd = document.createElement("td");
         const typePill = document.createElement("span");
@@ -13604,7 +14026,7 @@
           row.startLatest,
           row.end,
           row.endEarliest,
-          row.endLatest,
+          shiftListTime(row.endLatest),
           row.hours,
           row.outControl,
           row.rest,
@@ -14093,6 +14515,7 @@
       document.getElementById("shiftList").hidden = false;
       document.getElementById("shiftCreate").hidden = true;
       document.body.classList.remove("shift-create-open");
+      document.body.classList.remove("shift-detail-open");
     }
 
     function showShiftCreate() {
@@ -15039,6 +15462,7 @@
     document.getElementById("resetShift").addEventListener("click", () => showToast("班次查询条件已重置"));
     document.getElementById("openShiftCreate").addEventListener("click", showShiftCreate);
     document.getElementById("backShiftList").addEventListener("click", showShiftList);
+    document.getElementById("backShiftFromDetail").addEventListener("click", () => switchPage("shift"));
     document.getElementById("shiftTypeInput").addEventListener("change", updateShiftTypeFields);
     document.getElementById("roundingYes").addEventListener("change", updateRoundingFields);
     document.getElementById("roundingNo").addEventListener("change", updateRoundingFields);
@@ -15095,16 +15519,23 @@
       shiftRows.unshift({
         name,
         type,
+        elasticType: type === "弹性班次" ? document.getElementById("elasticTypeInput").value || "晚到晚走" : "--",
+        elasticDuration: type === "弹性班次" ? document.getElementById("elasticDurationInput").value || "60" : "--",
         attr,
         start: flexibleTimeMode ? "--" : document.getElementById("shiftStartInput").value,
         startEarliest: document.getElementById("shiftStartEarliestInput").value || "--",
         startLatest: flexibleTimeMode ? "--" : document.getElementById("shiftStartLatestInput").value,
-        end: flexibleTimeMode ? "--" : `${endDayValue() === "次日" ? "次日 " : ""}${document.getElementById("shiftEndInput").value}`,
+        end: flexibleTimeMode ? "--" : document.getElementById("shiftEndInput").value,
         endEarliest: flexibleTimeMode ? "--" : document.getElementById("shiftEndEarliestInput").value,
         endLatest: document.getElementById("shiftEndLatestInput").value || "--",
+        freeRangeStart: flexibleTimeMode ? document.querySelector("#freeRangeField input")?.value || document.getElementById("shiftStartEarliestInput").value || "--" : "--",
+        freeRangeStartDay: "当天",
+        freeRangeEnd: flexibleTimeMode ? document.getElementById("freeRangeEndInput").value || document.getElementById("shiftEndLatestInput").value || "--" : "--",
+        freeRangeEndDay: "后一天",
         hours: document.getElementById("shiftHoursInput").value || "0",
         outControl: restRadioValue("outShiftControl"),
         rest: restFlag,
+        restCheck: restFlag === "是" ? restRadioValue("restCheck") : "否",
         restControl: restFlag === "是" ? restControlFlag : "否",
         restType: restFlag === "是" ? restType : "--",
         restMinutes: restFlag === "是" && restType === "按时间段休息" ? primaryTimeRest.minutes || "--" : "--",
@@ -15172,11 +15603,15 @@
         : pageName === "attendanceSchemeDetail" ? "attendanceScheme"
           : pageName === "holidayEditor" ? "holiday"
             : pageName === "feishuClockSyncRecords" || pageName === "feishuClockSyncRuleDetail" ? "feishuClockSyncRule"
-              : pageName === "arrangementShiftLog" ? "arrangementShift" : pageName;
-      const navMappedPages = ["attendanceSchemeDetail", "holidayEditor", "feishuClockSyncRecords", "feishuClockSyncRuleDetail", "arrangementShiftLog"];
+              : pageName === "arrangementShiftLog" ? "arrangementShift"
+                : pageName === "shiftDetail" ? "shift" : pageName;
+      const navMappedPages = ["attendanceSchemeDetail", "holidayEditor", "feishuClockSyncRecords", "feishuClockSyncRuleDetail", "arrangementShiftLog", "shiftDetail"];
       document.querySelectorAll(".page-view").forEach((view) => {
         view.classList.toggle("active", view.dataset.page === pageName);
       });
+      if (pageName !== "shiftDetail") {
+        document.getElementById("shiftDetailPageBody").innerHTML = "";
+      }
       document.querySelectorAll(".page-title .nav-tab").forEach((item) => {
         item.classList.toggle("active", item.dataset.pageTab === pageName || navMappedPages.includes(pageName) && item.dataset.pageTab === sidebarPageName);
       });
@@ -15185,6 +15620,7 @@
       });
       document.body.classList.remove("cycle-create-open");
       document.body.classList.remove("shift-create-open");
+      document.body.classList.toggle("shift-detail-open", pageName === "shiftDetail");
       document.body.classList.toggle("notice-center-open", pageName === "myNotice");
       document.body.classList.toggle("scheme-detail-open", pageName === "attendanceSchemeDetail");
       document.body.classList.toggle("holiday-editor-open", pageName === "holidayEditor");
