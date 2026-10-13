@@ -6093,8 +6093,8 @@
             <div class="panel-title">查询条件</div>
             <div class="query-grid monthly-single">
               <label>
-                <span class="field-label">月份</span>
-                <input id="myMonthlyRange" class="scheme-log-range-input" type="text" value="2026-09 ~ 2026-09" placeholder="开始月份    ~    结束月份" aria-label="我的月报月份范围">
+                <span class="field-label">考勤周期</span>
+                <select id="myMonthlyRange" aria-label="我的月报考勤周期"></select>
               </label>
             </div>
             <div class="query-actions">
@@ -6148,8 +6148,8 @@
                 </select>
               </label>
               <label>
-                <span class="field-label">月份</span>
-                <input id="teamMonthlyRange" class="scheme-log-range-input" type="text" value="2026-09 ~ 2026-09" placeholder="开始月份    ~    结束月份" aria-label="团队月报月份范围">
+                <span class="field-label">考勤周期</span>
+                <select id="teamMonthlyRange" aria-label="团队月报考勤周期"></select>
               </label>
             </div>
             <div class="query-actions">
@@ -10259,7 +10259,6 @@
       { key: "dept", label: "部门" },
       { key: "periodStart", label: "考勤周期开始日期" },
       { key: "periodEnd", label: "考勤周期结束日期" },
-      { key: "month", label: "月份" },
       { key: "expectedDays", label: "应出勤天数" },
       { key: "legalHolidayDays", label: "法定假日天数" },
       { key: "actualWorkDays", label: "工作日实出勤天数" },
@@ -12170,44 +12169,63 @@
       return startMonth ? month >= startMonth : month <= endMonth;
     }
 
+    function monthlyReportCycleValue(row) {
+      return `${monthlyReportMonthValue(row.month)}|${row.periodStart}|${row.periodEnd}`;
+    }
+
     function monthlyReportRangeValue(rangeId) {
-      const value = document.getElementById(rangeId).value.trim();
-      const [startMonth, endMonth] = value.split("~").map((item) => item.trim());
-      return { startMonth, endMonth };
+      return document.getElementById(rangeId).value;
     }
 
     function resetMonthlyReportRange(rangeId) {
-      document.getElementById(rangeId).value = "2026-09 ~ 2026-09";
+      document.getElementById(rangeId).selectedIndex = 0;
     }
 
     function filteredMyMonthlyReports() {
-      const { startMonth, endMonth } = monthlyReportRangeValue("myMonthlyRange");
-      return monthlyReportRows.filter((row) => monthlyReportInRange(row.month, startMonth, endMonth));
+      const cycle = monthlyReportRangeValue("myMonthlyRange");
+      return monthlyReportRows.filter((row) => !cycle || monthlyReportCycleValue(row) === cycle);
     }
 
     function filteredTeamMonthlyReports() {
       const name = document.getElementById("teamMonthlyName").value;
       const dept = document.getElementById("teamMonthlyDept").value;
-      const { startMonth, endMonth } = monthlyReportRangeValue("teamMonthlyRange");
+      const cycle = monthlyReportRangeValue("teamMonthlyRange");
       return monthlyReportRows.filter((row) => {
         const nameMatched = name === "全部" || row.name === name;
         const deptMatched = dept === "全部" || row.dept === dept;
-        return nameMatched && deptMatched && monthlyReportInRange(row.month, startMonth, endMonth);
+        const cycleMatched = !cycle || monthlyReportCycleValue(row) === cycle;
+        return nameMatched && deptMatched && cycleMatched;
       });
     }
 
     function fillMonthlyReportFilters() {
       const nameSelect = document.getElementById("teamMonthlyName");
       const deptSelect = document.getElementById("teamMonthlyDept");
+      const myCycleSelect = document.getElementById("myMonthlyRange");
+      const teamCycleSelect = document.getElementById("teamMonthlyRange");
       const appendOptions = (select, values) => {
         values.forEach((value) => {
           const option = document.createElement("option");
-          option.textContent = value;
+          if (typeof value === "object") {
+            option.value = value.value;
+            option.textContent = value.label;
+          } else {
+            option.textContent = value;
+          }
           select.appendChild(option);
         });
       };
       appendOptions(nameSelect, [...new Set(monthlyReportRows.map((row) => row.name))]);
       appendOptions(deptSelect, [...new Set(monthlyReportRows.map((row) => row.dept))]);
+      const cycleOptions = [...new Map(monthlyReportRows.map((row) => [
+        monthlyReportCycleValue(row),
+        {
+          value: monthlyReportCycleValue(row),
+          label: `${row.periodStart} ~ ${row.periodEnd}`
+        }
+      ])).values()];
+      appendOptions(myCycleSelect, cycleOptions);
+      appendOptions(teamCycleSelect, cycleOptions);
     }
 
     function renderMyMonthlyReportRows() {
